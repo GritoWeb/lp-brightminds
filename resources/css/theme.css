@@ -1,3 +1,70 @@
+:root {
+  /* Font families */
+  --font-anton: 'Anton', sans-serif;
+  --font-heebo: 'Heebo', sans-serif;
+
+  /* Font sizes and line-heights */
+  --h1-font-size: 3.125rem;
+  --h1-line-height: 3.75rem;
+
+  --h2-font-size: 3.125rem;
+  --h2-line-height: 4.3125rem;
+
+  --h3-font-size: 2.125rem;
+  --h3-line-height: 3.1875rem;
+
+  --h4-font-size: 1.5rem;
+  --h4-line-height: 2.1rem;
+
+  /* Colors */
+  --color-primary: #ffda00;
+  --color-secondary: #e06c16;
+  --color-black: #121218;
+  --color-accent: #d4d4d4;
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+  line-height: var(--h1-line-height);
+  font-family: var(--font-anton);
+}
+
+h2 {
+  font-size: var(--h2-font-size);
+  line-height: var(--h2-line-height);
+  font-family: var(--font-anton);
+}
+
+h3 {
+  font-size: var(--h3-font-size);
+  line-height: var(--h3-line-height);
+  font-family: var(--font-anton);
+}
+
+h4 {
+  font-size: var(--h4-font-size);
+  line-height: var(--h4-line-height);
+  font-family: var(--font-anton);
+}
+
+p {
+  font-family: var(--font-heebo);
+  color: var(--color-black);
+  font-size: 1.1875rem;
+  line-height: 1.6rem;
+}
+
+button{
+  font-family: var(--font-heebo);
+}
+
+@media screen and (max-width: 768px) {
+  h2 {
+    font-size: 2.375rem;
+    line-height: 2.82rem;
+  }
+}
+
 @theme {
     --breakpoint-xs: 480px;
     --breakpoint-sm: 600px;
@@ -10,7 +77,10 @@
     --color-secondary: var(--wp--preset--color--secondary);
     --color-dark: var(--wp--preset--color--dark);
     --color-light: var(--wp--preset--color--light);
-    --color-background: #ffffff;
+    --color-primary: #ffda00;
+    --color-secondary: #e06c16;
+    --color-black: #121218;
+    --color-accent: #d4d4d4;
 
     --text-xs: var(--wp--preset--font-size--xs, 0.75rem);
     --text-sm: var(--wp--preset--font-size--sm, 0.875rem);
