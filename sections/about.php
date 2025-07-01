@@ -1,5 +1,5 @@
 
-<section class="bg-black text-white py-16">
+<section class="bg-black text-white py-40">
   <div class="container mx-auto grid gap-10 md:grid-cols-2 items-start px-6">
     
 
@@ -22,9 +22,9 @@
       
 
       <div>
-        <a href="#inscricao" class="inline-block bg-primary text-black font-semibold px-2 py-3 rounded-3xl hover:bg-opacity-80 transition no-underline! text-[1.125rem] lg:text-[1.5rem]/6 text-center lg:w-[65%]">
+        <button class="open-modal inline-block bg-primary text-black font-semibold px-2 py-3 rounded-3xl transition text-[1.125rem] lg:text-[1.5rem]/6 text-center lg:w-[65%] hover:bg-white hover:text-hover duration-300">
           Quero participar e ter acesso imediato ao conteúdo
-        </a>
+      </button>
       </div>
     </div>
 

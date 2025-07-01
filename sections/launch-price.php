@@ -25,7 +25,7 @@
         <span class="font-bold uppercase text-[1.5rem]!">Acesso imediato ao conteúdo</span>
       </p>
       <div class="py-8  ">
-          <button class="bg-white text-black rounded-full px-6 py-2 font-bold text-[1.25rem] lg:text-[1.6rem]">
+          <button class="open-modal bg-white text-black rounded-full px-6 py-2 font-bold text-[1.25rem] lg:text-[1.6rem] border border-transparent hover:border-hover hover:text-hover duration-300 hover:bg-primary">
         Inscreva-se agora
       </button>              
       </div>

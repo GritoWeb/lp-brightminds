@@ -56,6 +56,7 @@ p {
 
 button{
   font-family: var(--font-heebo);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {
@@ -81,6 +82,7 @@ button{
     --color-secondary: #e06c16;
     --color-black: #121218;
     --color-accent: #d4d4d4;
+    --color-hover: #895122;
 
     --text-xs: var(--wp--preset--font-size--xs, 0.75rem);
     --text-sm: var(--wp--preset--font-size--sm, 0.875rem);

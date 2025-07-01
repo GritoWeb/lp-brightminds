@@ -12,9 +12,9 @@
     <p class="mb-8 text-white!"><span class="font-semibold">“What one can be, one must be”,</span><br>Abraham Maslow.</p>
     
     <div>
-        <a href="#inscricao" class="inline-block bg-primary text-black font-semibold px-2 py-3 rounded-3xl hover:bg-opacity-80 transition no-underline! text-[1.125rem] lg:text-[1.5rem]/6 text-center lg:w-[65%]">
+        <button class="open-modal inline-block hover:bg-white hover:text-hover duration-300 bg-primary text-black font-semibold px-2 py-3 rounded-3xl transition text-[1.125rem] lg:text-[1.5rem]/6 text-center lg:w-[65%]">
           Quero que meus filhos tenham um futuro brilhante
-        </a>
+    </button>
       </div>
   </div>
 </section>

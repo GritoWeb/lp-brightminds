@@ -24,6 +24,10 @@
 
   <?php include get_template_directory() . '/sections/guarantee.php' ?>
 
+  <?php include get_template_directory() . '/sections/form.php' ?>
+
+  <?php include get_template_directory() . '/sections/form-wpp.php' ?>
+
 </section>
 <?php get_footer(); ?>
 </body>

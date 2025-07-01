@@ -11,7 +11,7 @@
     Custo zero. Risco zero.
   </p>
   
-  <button class="bg-primary text-black rounded-full px-6 py-2 font-medium lg:text-[1.5rem]!">
+  <button class="open-modal bg-primary text-black rounded-full px-6 py-2 font-medium lg:text-[1.5rem]! hover:bg-white border border-transparent hover:border-black duration-300">
     Inscreva-se agora
   </button>
   

@@ -33,6 +33,10 @@
       Política de privacidade
     </a>
   </div>
+
+  <div>
+    <img src="/wp-content/uploads/2025/07/h-widget-whatsapp.webp" alt="" class="fixed bottom-8 right-8 w-[70px]" id="openWhatsappForm">
+  </div>
 </footer>
 
 </div>

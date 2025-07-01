@@ -52,17 +52,25 @@ function brightminds_enqueue_styles() {
 add_action('wp_enqueue_scripts', 'brightminds_enqueue_styles');
 
 
-// Enqueue custom JavaScript file
 function mytheme_enqueue_custom_script() {
     wp_enqueue_script(
         'custom-faq', // Handle name
         get_template_directory_uri() . '/js/faq.js', // Path to your JS file
-        array('jquery'), // Dependencies (can be empty array if none)
-        null, // Version (use null or filemtime for cache busting)
+        array('jquery'), // Dependencies
+        null, // Version
+        true // Load in footer
+    );
+
+    wp_enqueue_script(
+        'custom-form', // Novo handle para o form.js
+        get_template_directory_uri() . '/js/form.js', // Caminho do novo arquivo
+        array('jquery'), // Dependencies
+        null, // Version
         true // Load in footer
     );
 }
 add_action('wp_enqueue_scripts', 'mytheme_enqueue_custom_script');
+
 
 
 

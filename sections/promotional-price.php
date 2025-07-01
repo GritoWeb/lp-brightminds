@@ -9,7 +9,7 @@
           <p class="font-bold text-xl lg:text-2xl!">ACESSO IMEDIATO AO CONTEÚDO</p>
       </div>
       <div class="pt-8 text-center">
-        <button class="bg-white rounded-full py-2 px-6 text-2xl">Inscreva-se agora</button>
+        <button class="open-modal bg-white rounded-full py-2 px-6 text-2xl hover:text-hover hover:bg-primary duration-300 border border-transparent hover:border-hover hover:border">Inscreva-se agora</button>
       </div>
     </div>
   </div>

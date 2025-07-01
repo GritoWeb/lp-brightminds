@@ -11,7 +11,7 @@
                     Assista ao vídeo de apresentação<br>
                     e entenda como.</p>
                     <div class="lg:pt-12 py-8 lg:py-0">
-                        <button class="bg-primary py-3 px-8 text-3xl rounded-3xl text-background">Inscreva-se</button>
+                        <button class="open-modal bg-primary py-3 px-8 text-3xl rounded-3xl text-background hover:bg-white hover:text-hover duration-300">Inscreva-se</button>
                     </div>
                 </div>
                 <div>
