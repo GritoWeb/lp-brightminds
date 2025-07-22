@@ -6,7 +6,7 @@
             </div>
             <div class="lg:flex lg:justify-between lg:pt-12">
                 <div class="flex flex-col">
-                    <h1 class="uppercase text-white" >Bem-vindo<br>à Bright Minds,<br><span class="text-primary font-bold">a escola do futuro.</span></h1>
+                    <h1 class="uppercase text-white" >Bem-vindo<br>à Bright Mindsssssss,<br><span class="text-primary font-bold">a escola do futuro.</span></h1>
                     <p class="text-accent! pt-4">O futuro dos seus filhos pode ser brilhante.<br>
                     Assista ao vídeo de apresentação<br>
                     e entenda como.</p>
