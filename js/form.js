@@ -35,20 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
     form.classList.remove('hidden');
   });
 
-  closeButton.addEventListener('click', () => {
-    form.classList.add('hidden');
-  });
+  //closeButton.addEventListener('click', () => {
+    //form.classList.add('hidden');
+  //});
 
-  consentCheckbox.addEventListener('change', () => {
-    if (consentCheckbox.checked) {
-      submitBtn.disabled = false;
-      submitBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
-      submitBtn.classList.add('bg-green-600', 'hover:bg-green-700', 'cursor-pointer');
-    } else {
-      submitBtn.disabled = true;
-      submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700', 'cursor-pointer');
-      submitBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
-    }
-  });
+  //consentCheckbox.addEventListener('change', () => {
+    //if (consentCheckbox.checked) {
+      //submitBtn.disabled = false;
+      //submitBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+      //submitBtn.classList.add('bg-green-600', 'hover:bg-green-700', 'cursor-pointer');
+    //} else {
+      //submitBtn.disabled = true;
+      //submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700', 'cursor-pointer');
+      //submitBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+    //}
+  //});
 });
 

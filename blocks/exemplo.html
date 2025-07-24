@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, ini        <div class="code-block">
+blocks/<br>
+├── 📄 blocks-config.php        # ⚙️ Configuração global (categoria, debug)<br>
+├── 🎨 blocks.css              # 🎨 Estilos de todos os blocos<br>
+├── 📖 README.md               # 📖 Documentação completa<br>
+├── 🚀 ATIVACAO.md             # 🚀 Instruções de ativação<br>
+├── 🎯 exemplo.html            # 📋 Este arquivo de demonstração<br>
+├── 🔘 primary-button/         # 🔘 Pasta do Bloco Botão Primário<br>
+│   ├── primary-button.php     # 📄 Template/HTML do bloco<br>
+│   └── register.php           # ⚡ Registro ACF + campos<br>
+├── 🎥 youtube-video/          # 🎥 Pasta do Bloco YouTube Video<br>
+│   ├── youtube-video.php      # 📄 Template/HTML do bloco<br>
+│   └── register.php           # ⚡ Registro ACF + campos<br>
+└── 👨‍🏫 professors/            # 👨‍🏫 Pasta do Bloco Professores<br>
+    ├── professors.php         # 📄 Template/HTML do bloco<br>
+    └── register.php           # ⚡ Registro ACF + campos (com repeater!)
+        </div>">
+    <title>Demonstração - Blocos ACF BrightMinds</title>
+    <style>
+        /* Simulando o Tailwind CSS necessário */
+        .rounded-3xl { border-radius: 1.5rem; }
+        .cursor-pointer { cursor: pointer; }
+        .lg\:w-\[560px\] { max-width: 560px; }
+        .lg\:h-\[315px\] { height: 315px; }
+        .h-\[200px\] { height: 200px; }
+        
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .demo-section {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        
+        .code-block {
+            background: #f8f8f8;
+            padding: 15px;
+            border-left: 4px solid #007cba;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        
+        @media (min-width: 1024px) {
+            .lg\:w-\[560px\] { width: 560px; }
+            .lg\:h-\[315px\] { height: 315px; }
+        }
+        
+        /* FAQ Styles (simulando app.css) */
+        .faq-icon::before, .faq-icon::after {
+            content: '';
+            position: absolute;
+            background: black;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease;
+        }
+        .faq-icon::before {
+            width: 100%;
+            height: 2px; 
+        }
+        .faq-icon::after {
+            width: 2px; 
+            height: 100%;
+        }
+        .faq-item.open .faq-icon::after {
+            transform: translate(-50%, -50%) scaleY(0);
+        }
+        .faq-item.open .faq-answer {
+            max-height: 200px !important;
+        }
+    </style>
+    <link rel="stylesheet" href="blocks.css">
+</head>
+<body>
+    
+    <h1>🚀 Demonstração dos Blocos ACF - BrightMinds</h1>
+    
+    <div class="demo-section">
+        <h2>🔘 Bloco: Botão Primário</h2>
+        <p><strong>Categoria no Editor:</strong> "BrightMinds" → "Botão Primário"</p>
+        
+        <div class="primary-button-block">
+            <div class="lg:pt-12 py-8 lg:py-0">
+                <a href="#" 
+                   class="open-modal bg-primary py-3 px-8 text-3xl rounded-3xl text-background hover:bg-white hover:text-hover duration-300 primary-button"
+                   style="background-color: #007cba; color: #ffffff; --hover-bg-color: #ffffff; --hover-text-color: #007cba;">
+                    Inscreva-se Agora
+                </a>
+            </div>
+        </div>
+        
+        <div class="code-block">
+            <strong>Campos Editáveis no ACF:</strong><br>
+            • Texto do Botão: "Inscreva-se Agora"<br>
+            • URL do Link: "#"<br>
+            • Cor de Fundo: #007cba<br>
+            • Cor do Texto: #ffffff<br>
+            • Cor de Fundo (Hover): #ffffff<br>
+            • Cor do Texto (Hover): #007cba
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <h2>🎥 Bloco: YouTube Video</h2>
+        <p><strong>Categoria no Editor:</strong> "BrightMinds" → "YouTube Video"</p>
+        
+        <div class="youtube-video-block">
+            <div>
+                <!-- YouTube placeholder -->
+                <div
+                    id="youtube-embed-example"
+                    class="youtube-placeholder rounded-3xl cursor-pointer"
+                    style="background-image: url('/wp-content/uploads/2025/07/thumb-video.webp'); background-size: cover; background-position: center; width: 100%; max-width: 560px; height: 200px;"
+                    aria-label="Play video"
+                    role="button"
+                    tabindex="0"
+                    data-embed-url="https://www.youtube-nocookie.com/embed/1MotoMgiWVU?autoplay=1"
+                    data-width="560"
+                    data-height="315"
+                    data-mobile-height="200"
+                >
+                    <!-- Play button overlay -->
+                    <div class="play-button-overlay">
+                        <svg width="68" height="48" viewBox="0 0 68 48">
+                            <path class="play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#f00"></path>
+                            <polyline points="45,24 27,14 27,34" fill="#fff"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="code-block">
+            <strong>Campos Editáveis no ACF:</strong><br>
+            • URL do YouTube: "https://www.youtube.com/watch?v=1MotoMgiWVU"<br>
+            • Imagem Thumbnail: Upload personalizado via Media Library<br>
+            • Largura do Vídeo: 560px (desktop)<br>
+            • Altura do Vídeo: 315px (desktop)<br>
+            • Altura Mobile: 200px
+        </div>
+        
+        <p style="text-align: center; margin-top: 20px;">
+            <strong>🎯 Clique no thumbnail acima para testar!</strong>
+        </p>
+    </div>
+    
+    <div class="demo-section">
+        <h2>📚 Bloco: FAQ - Dúvidas Frequentes</h2>
+        <p><strong>Categoria no Editor:</strong> "BrightMinds" → "FAQ - Dúvidas Frequentes"</p>
+        
+        <div class="faq-block">
+            <h3 style="font-size: 2rem; font-weight: 500; text-transform: uppercase; margin-bottom: 1.5rem;">Dúvidas Frequentes</h3>
+            
+            <div class="faq-item" style="border-bottom: 1px solid #d1d5db; padding: 0.25rem 0;">
+                <button class="faq-question" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 1rem 0; font-weight: bold; background: none; border: none; text-align: left; cursor: pointer; font-size: 1.2rem;">
+                    Qual a idade mínima para se inscrever na Bright Minds?
+                    <span class="faq-icon" style="position: relative; display: inline-block; width: 1.25rem; height: 1.25rem;"></span>
+                </button>
+                <div class="faq-answer" style="overflow: hidden; max-height: 0; transition: all 0.3s;">
+                    <p style="padding: 0.5rem 0; color: #707070;">A partir de 11 anos. Mas crianças menores também podem participar. Nesse caso, recomendamos que os pais participem ativamente, acompanhando as aulas junto com os seus filhos.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" style="border-bottom: 1px solid #d1d5db; padding: 0.25rem 0;">
+                <button class="faq-question" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 1rem 0; font-weight: bold; background: none; border: none; text-align: left; cursor: pointer; font-size: 1.2rem;">
+                    Adultos podem participar?
+                    <span class="faq-icon" style="position: relative; display: inline-block; width: 1.25rem; height: 1.25rem;"></span>
+                </button>
+                <div class="faq-answer" style="overflow: hidden; max-height: 0; transition: all 0.3s;">
+                    <p style="padding: 0.5rem 0; color: #707070;">Sim, adultos podem e devem participar, tanto se quiserem usar esse aprendizado para si próprios quanto se o objetivo for transmitir esse conhecimento para seus filhos, netos, sobrinhos ou alunos.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item" style="border-bottom: 1px solid #d1d5db; padding: 0.25rem 0;">
+                <button class="faq-question" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 1rem 0; font-weight: bold; background: none; border: none; text-align: left; cursor: pointer; font-size: 1.2rem;">
+                    Como vão ser realizadas as aulas ao vivo?
+                    <span class="faq-icon" style="position: relative; display: inline-block; width: 1.25rem; height: 1.25rem;"></span>
+                </button>
+                <div class="faq-answer" style="overflow: hidden; max-height: 0; transition: all 0.3s;">
+                    <p style="padding: 0.5rem 0; color: #707070;">Via Zoom, ao final de cada módulo. As aulas ao vivo terão como pauta os conteúdos daquele módulo (revisão e esclarecimento de dúvidas).</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="code-block">
+            <strong>Campos Editáveis no ACF:</strong><br>
+            • Título da Seção: "Dúvidas Frequentes"<br>
+            • Lista de Perguntas e Respostas (Repeater):<br>
+            &nbsp;&nbsp;→ Pergunta: Campo de texto<br>
+            &nbsp;&nbsp;→ Resposta: Campo textarea<br>
+            • Máximo: 20 perguntas por seção<br>
+            • JavaScript: faq.js (já existente)<br>
+            • CSS: app.css (classes existentes)
+        </div>
+        
+        <p style="text-align: center; margin-top: 20px;">
+            <strong>📱 Funciona com o JavaScript existente em faq.js</strong>
+        </p>
+    </div>
+    
+    <div class="demo-section">
+        <h2>📁 Estrutura Modular</h2>
+        <div class="code-block">
+blocks/<br>
+├── blocks-config.php          # ⚙️ Configuração global (categoria, debug)<br>
+├── blocks.css                 # 🎨 Estilos de todos os blocos<br>
+├── README.md                  # 📖 Documentação completa<br>
+├── ATIVACAO.md               # 🚀 Instruções de ativação<br>
+├── exemplo.html              # 📋 Este arquivo de demonstração<br>
+├── primary-button/           # 🔘 Pasta do Bloco Botão Primário<br>
+│   ├── primary-button.php    # 📄 Template/HTML do bloco<br>
+│   └── register.php          # ⚡ Registro ACF + campos<br>
+└── youtube-video/            # 🎥 Pasta do Bloco YouTube Video<br>
+    ├── youtube-video.php     # 📄 Template/HTML do bloco<br>
+    └── register.php          # ⚡ Registro ACF + campos
+        </div>
+    </div>
+    
+    <div class="demo-section">
+        <h2>✅ Como Usar no WordPress</h2>
+        <ol style="font-size: 16px; line-height: 1.6;">
+            <li><strong>📦 Instalar ACF:</strong> Plugin "Advanced Custom Fields" ativo</li>
+            <li><strong>✏️ Editor Gutenberg:</strong> Clique no "+" para adicionar bloco</li>
+            <li><strong>🏷️ Categoria "BrightMinds":</strong> Procure pelos blocos na categoria</li>
+            <li><strong>⚙️ Configurar Campos:</strong> Use o painel lateral direito</li>
+            <li><strong>📱 Preview em Tempo Real:</strong> Veja as mudanças no editor</li>
+            <li><strong>🌐 Publicar:</strong> Os blocos aparecem no frontend</li>
+        </ol>
+    </div>
+    
+    <div class="demo-section">
+        <h2>🚀 Características Técnicas</h2>
+        <ul style="font-size: 16px; line-height: 1.8;">
+            <li>✅ <strong>Modular:</strong> Cada bloco em pasta própria</li>
+            <li>✅ <strong>Auto-carregamento:</strong> Registro automático via functions.php</li>
+            <li>✅ <strong>Responsivo:</strong> Adaptado para desktop e mobile</li>
+            <li>✅ <strong>Acessível:</strong> Suporte a leitores de tela e navegação por teclado</li>
+            <li>✅ <strong>SEO-friendly:</strong> HTML semântico e otimizado</li>
+            <li>✅ <strong>Performance:</strong> Lazy loading para vídeos YouTube</li>
+            <li>✅ <strong>Editável:</strong> Interface amigável no admin</li>
+            <li>✅ <strong>Expansível:</strong> Fácil adicionar novos blocos</li>
+        </ul>
+    </div>
+ 
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const placeholder = document.getElementById('youtube-embed-example');
+        if (!placeholder) return;
+
+        function playVideo() {
+            const embedUrl = placeholder.getAttribute('data-embed-url');
+            const width = placeholder.getAttribute('data-width');
+            const height = placeholder.getAttribute('data-height');
+            const mobileHeight = placeholder.getAttribute('data-mobile-height');
+
+            const iframe = document.createElement('iframe');
+            iframe.setAttribute('src', embedUrl);
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+            iframe.setAttribute('allowfullscreen', 'true');
+            iframe.classList.add('rounded-3xl');
+
+            iframe.style.width = '100%';
+            iframe.style.maxWidth = width + 'px';
+            iframe.style.height = mobileHeight + 'px';
+
+            if (window.innerWidth >= 1024) {
+                iframe.style.width = width + 'px';
+                iframe.style.height = height + 'px';
+            }
+
+            placeholder.parentNode.replaceChild(iframe, placeholder);
+        }
+
+        // Click event
+        placeholder.addEventListener('click', playVideo);
+
+        // Keyboard accessibility
+        placeholder.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                playVideo();
+            }
+        });
+    });
+    </script>
+    
+    <!-- FAQ JavaScript (simulando faq.js) -->
+    <script>
+    // FAQ functionality (from faq.js)
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+
+                // Close all items
+                faqItems.forEach(i => {
+                    i.classList.remove('open');
+                    i.querySelector('.faq-answer').style.maxHeight = null;
+                });
+
+                // If clicked item was closed, open it
+                if (!isOpen) {
+                    item.classList.add('open');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                }
+            });
+        });
+    });
+    </script>
+
+</body>
+</html>

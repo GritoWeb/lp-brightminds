@@ -48,6 +48,14 @@ function brightminds_enqueue_styles() {
         [],
         null
     );
+
+    // Carregar estilos dos blocos ACF
+    wp_enqueue_style(
+        'acf-blocks',
+        get_template_directory_uri() . '/blocks/blocks.css',
+        [],
+        filemtime(get_template_directory() . '/blocks/blocks.css')
+    );
 }
 add_action('wp_enqueue_scripts', 'brightminds_enqueue_styles');
 
@@ -71,7 +79,29 @@ function mytheme_enqueue_custom_script() {
 }
 add_action('wp_enqueue_scripts', 'mytheme_enqueue_custom_script');
 
-
-
+// Registrar blocos ACF
+function register_acf_blocks() {
+    // Verificar se o ACF está ativo
+    if (function_exists('acf_register_block_type')) {
+        
+        $blocks_dir = get_template_directory() . '/blocks/';
+        
+        // Carregar configuração global dos blocos
+        if (file_exists($blocks_dir . 'blocks-config.php')) {
+            include_once $blocks_dir . 'blocks-config.php';
+        }
+        
+        // Buscar por pastas de blocos e carregar seus arquivos register.php
+        $block_folders = glob($blocks_dir . '*', GLOB_ONLYDIR);
+        
+        foreach ($block_folders as $block_folder) {
+            $register_file = $block_folder . '/register.php';
+            if (file_exists($register_file)) {
+                include_once $register_file;
+            }
+        }
+    }
+}
+add_action('acf/init', 'register_acf_blocks');
 
 tailpress();
