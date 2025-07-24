@@ -3,7 +3,7 @@
         'name' => 'tailpress/tailpress',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '9c094097e1c1fd4b99eb25cfd8627a744da23d1e',
+        'reference' => 'ea5616dd488fda73df16ae49d5466d48a45a736d',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -136,7 +136,7 @@
         'tailpress/tailpress' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '9c094097e1c1fd4b99eb25cfd8627a744da23d1e',
+            'reference' => 'ea5616dd488fda73df16ae49d5466d48a45a736d',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
