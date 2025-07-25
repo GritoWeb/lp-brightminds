@@ -18,9 +18,31 @@ $hover_background_color = get_field('hover_background_color') ?: '#ffffff';
 $hover_text_color = get_field('hover_text_color') ?: '#007cba';
 $button_alignment = get_field('button_alignment') ?: 'center';
 $font_weight = get_field('font_weight') ?: '700';
+$custom_font_size = get_field('custom_font_size');
+$custom_width = get_field('custom_width');
 $enable_hover_border = get_field('enable_hover_border');
 $hover_border_color = get_field('hover_border_color') ?: '#242424';
-$button_size = get_field('button_size') ?: '700';
+
+// Definir font-size
+if (!empty($custom_font_size)) {
+    $font_size = ($custom_font_size / 16) . 'rem';
+    $font_size_display = $custom_font_size . 'px (' . $font_size . ')';
+} else {
+    $font_size = '1rem';
+    $font_size_display = '16px (padrão)';
+}
+
+// Definir largura
+$width_style = '';
+$width_display = 'Automática';
+if (!empty($custom_width)) {
+    $width_style = 'max-width: ' . intval($custom_width) . 'px;';
+    $width_display = $custom_width . 'px';
+}
+
+// Padding padrão
+$padding_x = '28px';
+$padding_y = '12px';
 
 // Configurações específicas baseadas no peso da fonte
 if ($font_weight === '500') {
@@ -67,7 +89,7 @@ $font_weight_labels = array(
 <div class="acf-block-preview primary-button-backend-preview">
     <div class="acf-block-preview-header">
         <h3>🔘 Botão Primário</h3>
-        <p>Configure texto, cores, alinhamento e efeitos de hover</p>
+        <p>Configure texto, cores, alinhamento, tamanho da fonte e largura</p>
     </div>
 
     <div class="acf-block-preview-content">
@@ -102,8 +124,13 @@ $font_weight_labels = array(
             </div>
             
             <div class="status-item">
-                <span class="status-label">📏 Tamanho:</span>
-                <span class="status-value"><?php echo $current_size['label']; ?></span>
+                <span class="status-label">� Tamanho da Fonte:</span>
+                <span class="status-value"><?php echo $font_size_display; ?></span>
+            </div>
+            
+            <div class="status-item">
+                <span class="status-label">📏 Largura:</span>
+                <span class="status-value"><?php echo $width_display; ?></span>
             </div>
         </div>
 
@@ -117,7 +144,7 @@ $font_weight_labels = array(
                 </div>
                 <div class="size-item">
                     <span class="size-label">🔤 Font Size:</span>
-                    <span class="size-value"><?php echo esc_html($font_size); ?> (<?php echo $font_weight === '500' ? '25px' : '27.5px'; ?>)</span>
+                    <span class="size-value"><?php echo esc_html($font_size_display); ?></span>
                 </div>
                 <div class="size-item">
                     <span class="size-label">⚖️ Font Weight:</span>
@@ -125,7 +152,7 @@ $font_weight_labels = array(
                 </div>
                 <div class="size-item">
                     <span class="size-label">📏 Max Width:</span>
-                    <span class="size-value"><?php echo esc_html($current_size['max_width']); ?></span>
+                    <span class="size-value"><?php echo esc_html($width_display); ?></span>
                 </div>
             </div>
         </div>
@@ -186,8 +213,9 @@ $font_weight_labels = array(
                 <li>✅ Configure o texto e URL do botão</li>
                 <li>🎨 Escolha cores para normal e hover</li>
                 <li>📍 Defina o alinhamento (esquerda, centro, direita)</li>
-                <li>🔤 Ajuste o peso da fonte conforme necessário</li>
-                <li>📏 Selecione o tamanho (400px ou 700px)</li>
+                <li>🔤 Ajuste o peso da fonte (500 ou 700)</li>
+                <li>📝 <strong>Novo:</strong> Defina tamanho da fonte personalizado (deixe vazio = 16px padrão)</li>
+                <li>📏 <strong>Novo:</strong> Defina largura personalizada (deixe vazio = automática)</li>
                 <li>✨ Ative bordas no hover para efeitos visuais</li>
                 <li>🏷️ <strong>HTML:</strong> Use tags básicas como &lt;strong&gt;, &lt;em&gt;, &lt;br&gt;</li>
             </ul>

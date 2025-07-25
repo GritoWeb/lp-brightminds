@@ -14,35 +14,28 @@ $hover_text_color = get_field('hover_text_color') ?: '#007cba';
 // Novos campos
 $button_alignment = get_field('button_alignment') ?: 'center';
 $font_weight = get_field('font_weight') ?: '700';
+$custom_font_size = get_field('custom_font_size');
+$custom_width = get_field('custom_width');
 $enable_hover_border = get_field('enable_hover_border');
 $hover_border_color = get_field('hover_border_color') ?: '#242424';
 $enable_always_border = get_field('enable_always_border');
-$button_size = get_field('button_size') ?: '700';
 
-// Configurações específicas baseadas no peso da fonte
-if ($font_weight === '500') {
-    // Peso 500: padding 5px 28px, font-size 25px
-    $padding_x = '28px';
-    $padding_y = '5px';
-    $font_size = '1.5625rem'; // 25px ÷ 16 = 1.5625rem
+// Definir font-size
+if (!empty($custom_font_size)) {
+    $font_size = ($custom_font_size / 16) . 'rem'; // Converter px para rem
 } else {
-    // Peso 700 (padrão): padding 5px 28px, font-size 27.5px
-    $padding_x = '28px';
-    $padding_y = '5px';
-    $font_size = '1.71875rem'; // 27.5px ÷ 16 = 1.71875rem
+    $font_size = '1rem'; // Padrão 16px
 }
 
-// Configurações de tamanho baseadas na seleção (para max-width)
-$size_configs = array(
-    '400' => array(
-        'max_width' => '400px'
-    ),
-    '700' => array(
-        'max_width' => '700px'
-    )
-);
+// Definir largura
+$width_style = '';
+if (!empty($custom_width)) {
+    $width_style = 'max-width: ' . intval($custom_width) . 'px;';
+}
 
-$current_size = $size_configs[$button_size] ?? $size_configs['700'];
+// Padding padrão
+$padding_x = '28px';
+$padding_y = '12px';
 
 // Classes de alinhamento
 $alignment_classes = array(
@@ -61,17 +54,17 @@ $font_weight_class = $font_weight_classes[$font_weight] ?? 'font-bold';
 
 // Definir estilos inline para o botão
 $button_styles = sprintf(
-    'background-color: %s; color: %s; --hover-bg-color: %s; --hover-text-color: %s; --hover-border-color: %s; padding: %s %s; font-size: %s; max-width: %s; font-weight: %s;',
+    'background-color: %s; color: %s; --hover-bg-color: %s; --hover-text-color: %s; --hover-border-color: %s; padding: %s %s; font-size: %s; font-weight: %s; %s',
     esc_attr($background_color),
     esc_attr($text_color),
     esc_attr($hover_background_color),
     esc_attr($hover_text_color),
     esc_attr($hover_border_color),
     esc_attr($padding_y),
-    esc_attr($padding_x),
+    esc_attr($padding_x), 
     esc_attr($font_size),
-    esc_attr($current_size['max_width']),
-    esc_attr($font_weight)
+    esc_attr($font_weight),
+    esc_attr($width_style)
 );
 
 // Classes adicionais para bordas
@@ -88,7 +81,7 @@ $block_id = 'primary-button-' . $block['id'];
     <div class="lg:pt-12 py-8 lg:py-0 <?php echo esc_attr($alignment_class); ?>">
         <a 
             href="<?php echo esc_url($button_url); ?>" 
-            class="inline-block primary-button rounded-3xl duration-300 <?php echo esc_attr($border_classes); ?>"
+            class="open-modal !text-[1.58rem] text-center !py-1 !max-w-[440px] inline-block primary-button rounded-3xl duration-300 <?php echo esc_attr($border_classes); ?>"
             style="<?php echo esc_attr($button_styles); ?>"
         >
             <?php echo wp_kses_post($button_text); ?>
