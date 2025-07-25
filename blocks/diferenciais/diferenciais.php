@@ -38,7 +38,7 @@ $diferencial_chunks = array_chunk($diferenciais, 3);
     <div class="container mx-auto">
         
         <?php if ($section_title): ?>
-        <h2 class="text-4xl !font-normal uppercase mb-12"><?php echo esc_html($section_title); ?></h2>
+        <h2 class="text-4xl !font-normal text-gray uppercase mb-12"><?php echo esc_html($section_title); ?></h2>
         <?php endif; ?>
         
         <?php if ($diferencial_chunks): ?>

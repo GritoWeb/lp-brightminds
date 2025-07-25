@@ -70,6 +70,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const height = placeholder.getAttribute('data-height');
         const mobileHeight = placeholder.getAttribute('data-mobile-height');
 
+        // Esconder a imagem de fundo e o overlay
+        placeholder.style.backgroundImage = 'none';
+        placeholder.style.backgroundColor = '#000';
+        
+        // Remover o overlay do botão play
+        const playButton = placeholder.querySelector('div');
+        if (playButton) {
+            playButton.remove();
+        }
+
+        // Criar o iframe
         const iframe = document.createElement('iframe');
         iframe.setAttribute('src', embedUrl);
         iframe.setAttribute('frameborder', '0');
@@ -77,16 +88,19 @@ document.addEventListener('DOMContentLoaded', function() {
         iframe.setAttribute('allowfullscreen', 'true');
         iframe.classList.add('rounded-3xl');
 
+        // Definir dimensões do iframe para preencher o container
         iframe.style.width = '100%';
-        iframe.style.maxWidth = width + 'px';
-        iframe.style.height = mobileHeight + 'px';
+        iframe.style.height = '100%';
+        iframe.style.position = 'absolute';
+        iframe.style.top = '0';
+        iframe.style.left = '0';
 
-        if (window.innerWidth >= 1024) {
-            iframe.style.width = width + 'px';
-            iframe.style.height = height + 'px';
-        }
-
-        placeholder.parentNode.replaceChild(iframe, placeholder);
+        // Tornar o container posição relativa
+        placeholder.style.position = 'relative';
+        placeholder.style.cursor = 'default';
+        
+        // Inserir o iframe dentro do container
+        placeholder.appendChild(iframe);
     }
 
     // Click event

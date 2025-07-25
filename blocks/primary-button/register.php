@@ -94,6 +94,95 @@ if (function_exists('acf_add_local_field_group')) {
                 'required' => 0,
                 'default_value' => '#007cba',
             ),
+            // Alinhamento do botão
+            array(
+                'key' => 'field_button_alignment',
+                'label' => '📍 Alinhamento do Botão',
+                'name' => 'button_alignment',
+                'type' => 'select',
+                'instructions' => 'Escolha como o botão deve ser alinhado na página',
+                'required' => 0,
+                'choices' => array(
+                    'left' => '⬅️ Esquerda',
+                    'center' => '🎯 Centro',
+                    'right' => '➡️ Direita',
+                ),
+                'default_value' => 'center',
+                'wrapper' => array(
+                    'width' => '50',
+                ),
+            ),
+            // Peso da fonte
+            array(
+                'key' => 'field_font_weight',
+                'label' => '🔤 Peso da Fonte',
+                'name' => 'font_weight',
+                'type' => 'select',
+                'instructions' => 'Escolha o peso (espessura) da fonte do botão',
+                'required' => 0,
+                'choices' => array(
+                    '300' => '📝 Light (300)',
+                    '400' => '📄 Normal (400)',
+                    '500' => '📋 Medium (500)',
+                    '600' => '📊 Semibold (600)',
+                    '700' => '📰 Bold (700)',
+                    '800' => '📚 Extrabold (800)',
+                ),
+                'default_value' => '600',
+                'wrapper' => array(
+                    'width' => '50',
+                ),
+            ),
+            // Ativar borda no hover
+            array(
+                'key' => 'field_enable_hover_border',
+                'label' => '🖼️ Ativar Borda no Hover',
+                'name' => 'enable_hover_border',
+                'type' => 'true_false',
+                'instructions' => 'Ativar esta opção para mostrar uma borda quando o mouse passar sobre o botão',
+                'required' => 0,
+                'default_value' => 0,
+                'ui' => 1,
+                'wrapper' => array(
+                    'width' => '100',
+                ),
+            ),
+            // Cor da borda no hover
+            array(
+                'key' => 'field_hover_border_color',
+                'label' => '🎨 Cor da Borda (Hover)',
+                'name' => 'hover_border_color',
+                'type' => 'color_picker',
+                'instructions' => 'Selecione a cor da borda quando o mouse passar sobre o botão',
+                'required' => 0,
+                'default_value' => '#242424',
+                'conditional_logic' => array(
+                    array(
+                        array(
+                            'field' => 'field_enable_hover_border',
+                            'operator' => '==',
+                            'value' => '1',
+                        ),
+                    ),
+                ),
+                'wrapper' => array(
+                    'width' => '50',
+                ),
+            ),
+            // Ativar borda sempre visível
+            array(
+                'key' => 'field_enable_always_border',
+                'label' => '⭕ Ativar Borda Sempre Visível', 
+                'name' => 'enable_always_border',
+                'type' => 'true_false',
+                'instructions' => 'Ativar esta opção para mostrar uma borda branca sempre visível no botão',
+                'required' => 0,
+                'default_value' => 0,
+                'ui' => 1,
+                'wrapper' => array(
+                    'width' => '50',
+                ),
+            ),
         ),
         'location' => array(
             array(

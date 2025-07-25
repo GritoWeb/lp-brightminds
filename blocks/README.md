@@ -41,6 +41,15 @@ Um botão customizável com as seguintes opções editáveis:
 </div>
 ```
 
+**🆕 NOVAS FUNCIONALIDADES ADICIONADAS:**
+- ✅ **Alinhamento Configurável**: Esquerda, Centro ou Direita
+- ✅ **Peso da Fonte**: De Light (300) até Extrabold (800)
+- ✅ **Borda no Hover**: Ativar/desativar com cor personalizável (#242424 padrão)
+- ✅ **Borda Sempre Visível**: Opção de borda branca sempre presente
+- ✅ **Modal de Configuração**: Preview em tempo real no admin
+- ✅ **Border-radius**: 25px no hover quando borda ativada
+- ✅ **CSS Variables**: Sistema dinâmico para cores hover
+
 ### 🎥 YouTube Video (`acf/youtube-video`)
 
 Um player de YouTube com thumbnail personalizada que carrega o vídeo ao clicar:
@@ -73,6 +82,9 @@ Um player de YouTube com thumbnail personalizada que carrega o vídeo ao clicar:
 - ✅ **Acessível** - Suporte a teclado e leitores de tela
 - ✅ **Efeitos Hover** - Animações suaves ao passar o mouse
 - ✅ **YouTube NoScript** - Usa domínio sem cookies para privacidade
+- ✅ **Container Preservado** - Dimensões mantidas após carregar vídeo
+- ✅ **Thumbnail Oculta** - Apenas a foto desaparece, container permanece
+- ✅ **Modal Admin** - Preview e configuração amigável no backend
 
 ### 👨‍🏫 Nossos Professores (`acf/professors`)
 
