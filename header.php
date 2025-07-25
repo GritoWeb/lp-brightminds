@@ -10,6 +10,9 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A Bright Minds é uma plataforma de aprendizado online inovadora, projetada para crianças a partir de 11 anos e adolescentes que querem aprender habilidades fundamentais para o futuro.
+Nosso foco é oferecer conteúdos que todos os pais gostariam que as escolas oferecessem, como comunicação, oratória," />
+    <meta property="og:image" content="/wp-content/uploads/2025/07/download.webp">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
     <link rel="stylesheet" href="resources/css/editor-style.css" >

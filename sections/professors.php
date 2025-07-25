@@ -9,7 +9,7 @@
     
     <div class="flex items-center gap-4">
       <div class="w-[190px]">
-        <img src="/wp-content/uploads/2025/06/marcel-van-hattem.webp" alt="Rosto Marcel van Hattem" class="rounded-full">
+        <img src="/wp-content/uploads/2025/07/marcel-van-hattem.webp" alt="Rosto Marcel van Hattem" class="rounded-full">
       </div>
       <div class="w-[70%]">
         <h3>Marcel van Hattem</h3>
@@ -22,7 +22,7 @@
 
     <div class="flex items-center gap-4">
       <div class="w-[190px]">
-        <img src="/wp-content/uploads/2025/06/flavio-morgenstern.webp" alt="Rosto Flávio Morgenstern" class="rounded-full">
+        <img src="/wp-content/uploads/2025/07/flavio-morgenstern.webp" alt="Rosto Flávio Morgenstern" class="rounded-full">
       </div>
       <div class="w-[70%]">
         <h3>Flávio Morgenstern</h3>
@@ -35,7 +35,7 @@
 
     <div class="flex items-center gap-4">
       <div class="w-[190px]">
-        <img src="/wp-content/uploads/2025/06/ana-paula-henkel.webp" alt="Rosto Ana Paula Henkel" class="rounded-full">
+        <img src="/wp-content/uploads/2025/07/ana-paula-henkel.webp" alt="Rosto Ana Paula Henkel" class="rounded-full">
       </div>
       <div class="w-[70%]">
         <h3>Ana Paula Henkel</h3>
@@ -48,7 +48,7 @@
 
     <div class="flex items-center gap-4">
       <div class="w-[190px]">
-        <img src="/wp-content/uploads/2025/06/paula-schmitt.webp" alt="Rosto Paula Schmitt" class="rounded-full">
+        <img src="/wp-content/uploads/2025/07/paula-schmitt.webp" alt="Rosto Paula Schmitt" class="rounded-full">
       </div>
       <div class="w-[70%]">
         <h3>Paula Schmitt</h3>
@@ -61,7 +61,7 @@
 
     <div class="flex items-center gap-4">
       <div class="w-[190px]">
-        <img src="/wp-content/uploads/2025/06/rodrigo-constantino.webp" alt="Rosto Rodrigo Constantino" class="rounded-full">
+        <img src="/wp-content/uploads/2025/07/rodrigo-constantino.webp" alt="Rosto Rodrigo Constantino" class="rounded-full">
       </div>
       <div class="w-[70%]">
         <h3>Rodrigo Constantino</h3>
@@ -74,7 +74,7 @@
 
     <div class="flex items-center gap-4">
       <div class="w-[190px]">
-        <img src="/wp-content/uploads/2025/06/ubiratan-jorge-iorio.webp" alt="Rosto Ubiratan Jorge Iorio" class="rounded-full">
+        <img src="/wp-content/uploads/2025/07/ubiratan-jorge-iorio.webp" alt="Rosto Ubiratan Jorge Iorio" class="rounded-full">
       </div>
       <div class="w-[70%]">
         <h3>Ubiratan Jorge Iorio</h3>

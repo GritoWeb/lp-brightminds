@@ -3,7 +3,7 @@
 <section class="purpose-section flex flex-col md:flex-row">
 
   <div class="w-full md:w-1/2">
-    <img src="/wp-content/uploads/2025/06/nosso-proposito.webp" alt="Parent and child studying together" class="w-full h-full object-cover">
+    <img src="/wp-content/uploads/2025/07/nosso-proposito.webp" alt="Parent and child studying together" class="w-full h-full object-cover">
   </div>
 
   <div class="w-full md:w-1/2 bg-black text-white flex flex-col justify-center items-start px-8 py-32! md:p-16">

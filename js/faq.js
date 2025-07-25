@@ -1,5 +1,3 @@
-
-console.log('FAQ script loaded');
 // Select all FAQ items
   const faqItems = document.querySelectorAll('.faq-item');
 
@@ -23,5 +21,3 @@ console.log('FAQ script loaded');
       }
     });
   });
-
-

@@ -8,7 +8,7 @@
 get_header();
 ?>
 
-<div class=" mx-auto space-y-24 lg:space-y-32">
+<div>
 	<?php if (!is_singular()): ?>
 		<?php if (is_archive()): ?>
 			<header class="mb-8">

@@ -1,6 +1,4 @@
-
 window.addEventListener('load', function () {
-
     let mainNavigation = document.getElementById('primary-navigation')
     let mainNavigationToggle = document.getElementById('primary-menu-toggle')
 

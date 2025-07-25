@@ -15,7 +15,7 @@ return array(
 		'path'    => array( $vendorDir . '/tailpress/cli/src' )
 	),
 	'TailPress\\' => array(
-		'version' => 'dev-master',
+		'version' => '1.0.0.0',
 		'path'    => array( $baseDir . '/src' )
 	),
 	'Symfony\\Polyfill\\Mbstring\\' => array(

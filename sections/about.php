@@ -29,7 +29,7 @@
     </div>
 
     <div>
-      <img src="/wp-content/uploads/2025/06/sobre.webp" alt="Retrato de Tito Santos, fundador da Bright Minds" class="w-full rounded-lg shadow-lg max-w-[431px]">
+      <img src="/wp-content/uploads/2025/07/sobre.webp" alt="Retrato de Tito Santos, fundador da Bright Minds" class="w-full rounded-lg shadow-lg max-w-[431px]">
     </div>
     
   </div>

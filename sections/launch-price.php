@@ -17,7 +17,7 @@
       <h3 class="font-medium uppercase text-black lg:text-[3.625rem]/18!">
         Preço promocional<br>de lançamento
       </h3>
-      <h3 class="text-secondary font-medium text-3xl text-8xl! uppercase">
+      <h3 class="text-secondary font-medium text-8xl! uppercase">
         12x de R$ 299
       </h3>
       <p class="text-black font-bold pt-4">

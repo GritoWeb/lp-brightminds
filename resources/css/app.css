@@ -11,10 +11,6 @@
     padding-inline: 2rem;
 }
 
-a {
-  text-decoration: none;
-}
-
 .container{
   max-width: 1230px;
 }
@@ -69,6 +65,50 @@ a {
   .faq-item.open .faq-icon::after {
     transform: translate(-50%, -50%) scaleY(0);
   }
+
+  .page-terms{
+    background-color: #313131;
+  }
+
+  .page-terms p{
+    color: white;
+  }
+
+  .youtube-placeholder {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    width: 100%;
+    max-width: 560px; 
+    height: 200px;
+}
+
+@media (min-width: 1024px) {
+    .youtube-placeholder {
+        width: 560px;
+        height: 315px;
+    }
+}
+
+.youtube-placeholder::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 68px;
+    height: 48px;
+    margin-left: -34px;
+    margin-top: -24px;
+    background: url('https://img.icons8.com/ios-filled/100/ffffff/play--v1.png') no-repeat center center;
+    background-size: contain;
+}
+
+.youtube-placeholder:focus {
+    outline: 2px solid #f0f;
+}
+
+
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,

@@ -4,7 +4,7 @@
       <button id="closeModalBtn" class="absolute top-2 right-2 text-3xl text-gray-700">&times;</button>
       
       <div class="flex justify-center mb-4">
-        <img src="/wp-content/uploads/2025/06/logo.webp" alt="Logo Bright Minds" class="w-[150px]">
+        <img src="/wp-content/uploads/2025/07/logo.webp" alt="Logo Bright Minds" class="w-[150px]">
       </div>
       
       <p class="text-center mb-4 uppercase text-[13px]! text-[#767676]! font-semibold tracking-[3px]">

@@ -1,7 +1,7 @@
 
 <div class="container py-16 grid lg:grid-cols-3">
   <div>
-    <img src="/wp-content/uploads/2025/06/bonus.webp" alt="Imagem João Malheiro">
+    <img src="/wp-content/uploads/2025/07/bonus.webp" alt="Imagem João Malheiro">
   </div>
   <div class="col-span-2 mt-2 lg:mt-0">
     <h2 class="uppercase">Bônus</h2>

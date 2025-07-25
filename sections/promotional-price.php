@@ -3,7 +3,7 @@
   <div class="container py-16">
     <div class="lg:text-center pt-4">
       <h2 class="uppercase">Preço Promocional<br>de Lançamento</h2>
-      <h3 class="text-8xl! uppercase text-secondary pt-8">12x de<br>r$ 299,00</h3>
+      <h3 class="lg:text-8xl! text-6xl! uppercase text-secondary pt-8">12x de<br>r$ 299,00</h3>
       <div class="mt-12">
           <p><span class="font-bold">10% de desconto</span> para pagamento à vista no Pix</p>
           <p class="font-bold text-xl lg:text-2xl!">ACESSO IMEDIATO AO CONTEÚDO</p>
