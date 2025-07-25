@@ -7,7 +7,7 @@
 if (empty(get_field('titulo')) && is_admin()) {
     ?>
     <div class="proposito-config-panel p-8 bg-purple-50 border-2 border-dashed border-purple-600 rounded-lg text-center">
-        <h3 class="mt-0 text-purple-600 text-xl font-bold">💝 Configurar Nosso Propósito</h3>
+        <h3 class="mt-0 text-purple-600 text-xl font-bold">Configurar Nosso Propósito</h3>
         <p class="mb-5 text-gray-600">Clique no botão abaixo para configurar a seção</p>
         
         <button onclick="openPropositoModal()" class="bg-purple-600 text-white border-0 py-3 px-6 rounded cursor-pointer text-base hover:bg-purple-700 transition-colors">

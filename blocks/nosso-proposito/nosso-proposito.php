@@ -89,7 +89,10 @@ if (is_array($imagem)) {
         <div>
             <a 
                 href="<?php echo esc_url($botao_url); ?>"
-                class="open-modal inline-block hover:bg-white hover:text-hover duration-300 bg-primary text-black font-semibold px-2 py-3 rounded-3xl transition text-[1.125rem] lg:text-[1.5rem]/6 text-center lg:w-[65%]"
+                class="open-modal inline-block duration-300 bg-primary font-semibold px-2 py-3 rounded-3xl transition text-[1.125rem] lg:text-[1.5rem]/6 text-center lg:w-[65%]"
+                style="color: #242424;"
+                onmouseover="this.style.backgroundColor='white'; this.style.color='#844d17';"
+                onmouseout="this.style.backgroundColor=''; this.style.color='#242424';"
             >
                 <?php echo esc_html($botao_texto); ?>
             </a>

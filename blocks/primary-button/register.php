@@ -43,10 +43,10 @@ if (function_exists('acf_add_local_field_group')) {
                 'label' => 'Texto do Botão',
                 'name' => 'button_text',
                 'type' => 'text',
-                'instructions' => 'Digite o texto que aparecerá no botão',
+                'instructions' => 'Digite o texto que aparecerá no botão. Tags HTML básicas são permitidas (strong, em, br, span).',
                 'required' => 1,
                 'default_value' => 'Inscreva-se',
-                'placeholder' => 'Ex: Inscreva-se',
+                'placeholder' => 'Ex: Inscreva-se <strong>Agora</strong>',
             ),
             array(
                 'key' => 'field_button_url',
@@ -118,17 +118,13 @@ if (function_exists('acf_add_local_field_group')) {
                 'label' => '🔤 Peso da Fonte',
                 'name' => 'font_weight',
                 'type' => 'select',
-                'instructions' => 'Escolha o peso (espessura) da fonte do botão',
+                'instructions' => 'Escolha o peso (espessura) da fonte do botão. Cada peso tem padding e tamanho específicos.',
                 'required' => 0,
                 'choices' => array(
-                    '300' => '📝 Light (300)',
-                    '400' => '📄 Normal (400)',
-                    '500' => '📋 Medium (500)',
-                    '600' => '📊 Semibold (600)',
-                    '700' => '📰 Bold (700)',
-                    '800' => '📚 Extrabold (800)',
+                    '500' => '📄 Medium (500) - 25px | Padding: 5px 28px',
+                    '700' => '📰 Bold (700) - 27.5px | Padding: 5px 28px',
                 ),
-                'default_value' => '600',
+                'default_value' => '700',
                 'wrapper' => array(
                     'width' => '50',
                 ),
@@ -181,6 +177,23 @@ if (function_exists('acf_add_local_field_group')) {
                 'ui' => 1,
                 'wrapper' => array(
                     'width' => '50',
+                ),
+            ),
+            // Tamanho do botão
+            array(
+                'key' => 'field_button_size',
+                'label' => '📏 Tamanho do Botão',
+                'name' => 'button_size',
+                'type' => 'select',
+                'instructions' => 'Escolha o tamanho do botão (padding e fonte serão aplicados automaticamente)',
+                'required' => 0,
+                'choices' => array(
+                    '400' => '📱 Pequeno (400px) - Padding menor, fonte 1.5625rem',
+                    '700' => '🖥️ Grande (700px) - Padding maior, fonte 1.71rem',
+                ),
+                'default_value' => '700',
+                'wrapper' => array(
+                    'width' => '100',
                 ),
             ),
         ),

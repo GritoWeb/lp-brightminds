@@ -17,10 +17,39 @@ $text_color = get_field('text_color') ?: '#ffffff';
 $hover_background_color = get_field('hover_background_color') ?: '#ffffff';
 $hover_text_color = get_field('hover_text_color') ?: '#007cba';
 $button_alignment = get_field('button_alignment') ?: 'center';
-$font_weight = get_field('font_weight') ?: '600';
+$font_weight = get_field('font_weight') ?: '700';
 $enable_hover_border = get_field('enable_hover_border');
 $hover_border_color = get_field('hover_border_color') ?: '#242424';
-$enable_always_border = get_field('enable_always_border');
+$button_size = get_field('button_size') ?: '700';
+
+// Configurações específicas baseadas no peso da fonte
+if ($font_weight === '500') {
+    // Peso 500: padding 5px 28px, font-size 25px
+    $padding_x = '28px';
+    $padding_y = '5px';
+    $font_size = '1.5625rem'; // 25px
+    $font_label = '� Medium (500) - 25px';
+} else {
+    // Peso 700 (padrão): padding 5px 28px, font-size 27.5px
+    $padding_x = '28px';
+    $padding_y = '5px';
+    $font_size = '1.71875rem'; // 27.5px
+    $font_label = '📰 Bold (700) - 27.5px';
+}
+
+// Configurações de tamanho para max-width
+$size_configs = array(
+    '400' => array(
+        'label' => '� Pequeno (400px)',
+        'max_width' => '400px'
+    ),
+    '700' => array(
+        'label' => '🖥️ Grande (700px)',
+        'max_width' => '700px'
+    )
+);
+
+$current_size = $size_configs[$button_size] ?? $size_configs['700'];
 
 // Traduzir valores para exibição
 $alignment_labels = array(
@@ -30,12 +59,8 @@ $alignment_labels = array(
 );
 
 $font_weight_labels = array(
-    '300' => '📝 Light (300)',
-    '400' => '📄 Normal (400)',
-    '500' => '📋 Medium (500)',
-    '600' => '📊 Semibold (600)',
-    '700' => '📰 Bold (700)',
-    '800' => '📚 Extrabold (800)'
+    '500' => '📄 Medium (500) - 25px | Padding: 5px 28px',
+    '700' => '📰 Bold (700) - 27.5px | Padding: 5px 28px'
 );
 ?>
 
@@ -49,8 +74,8 @@ $font_weight_labels = array(
         <!-- Preview do Botão -->
         <div class="button-preview-container" style="text-align: <?php echo esc_attr($button_alignment); ?>;">
             <div class="button-preview" 
-                 style="display: inline-block; background-color: <?php echo esc_attr($background_color); ?>; color: <?php echo esc_attr($text_color); ?>; padding: 12px 32px; border-radius: 24px; font-weight: <?php echo esc_attr($font_weight); ?>; text-decoration: none; font-size: 18px; <?php echo $enable_always_border ? 'border: 1px solid white;' : ''; ?>">
-                <?php echo esc_html($button_text); ?>
+                 style="display: inline-block; background-color: <?php echo esc_attr($background_color); ?>; color: <?php echo esc_attr($text_color); ?>; padding: <?php echo esc_attr($padding_y); ?> <?php echo esc_attr($padding_x); ?>; border-radius: 24px; font-weight: <?php echo esc_attr($font_weight); ?>; text-decoration: none; font-size: <?php echo esc_attr($font_size); ?>; max-width: <?php echo esc_attr($current_size['max_width']); ?>; <?php echo $enable_always_border ? 'border: 1px solid white;' : ''; ?>">
+                <?php echo wp_kses_post($button_text); ?>
             </div>
         </div>
 
@@ -58,7 +83,7 @@ $font_weight_labels = array(
         <div class="preview-status">
             <div class="status-item">
                 <span class="status-label">📝 Texto:</span>
-                <span class="status-value"><?php echo esc_html($button_text); ?></span>
+                <span class="status-value"><?php echo wp_kses_post($button_text); ?></span>
             </div>
             
             <div class="status-item">
@@ -74,6 +99,34 @@ $font_weight_labels = array(
             <div class="status-item">
                 <span class="status-label">🔤 Peso da Fonte:</span>
                 <span class="status-value"><?php echo $font_weight_labels[$font_weight] ?? $font_weight; ?></span>
+            </div>
+            
+            <div class="status-item">
+                <span class="status-label">📏 Tamanho:</span>
+                <span class="status-value"><?php echo $current_size['label']; ?></span>
+            </div>
+        </div>
+
+        <!-- Configurações de Tamanho -->
+        <div class="size-preview">
+            <h4>📏 Configurações Aplicadas:</h4>
+            <div class="size-details">
+                <div class="size-item">
+                    <span class="size-label">📐 Padding:</span>
+                    <span class="size-value"><?php echo esc_html($padding_y); ?> (Y) × <?php echo esc_html($padding_x); ?> (X)</span>
+                </div>
+                <div class="size-item">
+                    <span class="size-label">🔤 Font Size:</span>
+                    <span class="size-value"><?php echo esc_html($font_size); ?> (<?php echo $font_weight === '500' ? '25px' : '27.5px'; ?>)</span>
+                </div>
+                <div class="size-item">
+                    <span class="size-label">⚖️ Font Weight:</span>
+                    <span class="size-value"><?php echo esc_html($font_weight); ?></span>
+                </div>
+                <div class="size-item">
+                    <span class="size-label">📏 Max Width:</span>
+                    <span class="size-value"><?php echo esc_html($current_size['max_width']); ?></span>
+                </div>
             </div>
         </div>
 
@@ -134,7 +187,9 @@ $font_weight_labels = array(
                 <li>🎨 Escolha cores para normal e hover</li>
                 <li>📍 Defina o alinhamento (esquerda, centro, direita)</li>
                 <li>🔤 Ajuste o peso da fonte conforme necessário</li>
+                <li>📏 Selecione o tamanho (400px ou 700px)</li>
                 <li>✨ Ative bordas no hover para efeitos visuais</li>
+                <li>🏷️ <strong>HTML:</strong> Use tags básicas como &lt;strong&gt;, &lt;em&gt;, &lt;br&gt;</li>
             </ul>
         </div>
     </div>
@@ -215,17 +270,51 @@ $font_weight_labels = array(
 
 .color-preview,
 .hover-effects,
+.size-preview,
 .usage-instructions {
     margin-bottom: 20px;
 }
 
 .color-preview h4,
 .hover-effects h4,
+.size-preview h4,
 .usage-instructions h4 {
     margin: 0 0 10px 0;
     color: #374151;
     font-size: 14px;
     font-weight: 600;
+}
+
+.size-details {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 12px;
+}
+
+.size-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.size-item:last-child {
+    margin-bottom: 0;
+}
+
+.size-label {
+    font-weight: 600;
+    color: #374151;
+}
+
+.size-value {
+    color: #6b7280;
+    font-family: monospace;
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 3px;
 }
 
 .color-row {
