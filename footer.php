@@ -16,7 +16,7 @@
   
   <div class="flex flex-col md:flex-row items-center md:items-end md:justify-start space-y-4 md:space-y-0 md:space-x-4">
    
-    <img src="/wp-content/uploads/2025/06/logo.webp" alt="Bright Minds Logo" class="w-48 h-auto">
+    <img src="/wp-content/uploads/2025/07/logo.webp" alt="Bright Minds Logo" class="w-48 h-auto">
     
   
     <div>
