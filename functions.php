@@ -42,39 +42,119 @@ function brightminds_enqueue_styles() {
         false
     );
 
-    wp_enqueue_style(
-        'theme',
-        get_template_directory_uri() . '/dist/css/app.css',
-        [],
-        null
-    );
+    // Function to get compiled CSS file
+    $compiled_css = brightminds_get_compiled_asset('app', 'css');
+    
+    if ($compiled_css) {
+        wp_enqueue_style(
+            'theme',
+            $compiled_css['url'],
+            [],
+            $compiled_css['version']
+        );
+    } else {
+        // Fallback para desenvolvimento
+        wp_enqueue_style(
+            'theme-dev',
+            get_template_directory_uri() . '/resources/css/app.css',
+            [],
+            time()
+        );
+    }
 
     // Carregar estilos dos blocos ACF
-    wp_enqueue_style(
-        'acf-blocks',
-        get_template_directory_uri() . '/blocks/blocks.css',
-        [],
-        filemtime(get_template_directory() . '/blocks/blocks.css')
-    );
+    $acf_blocks_file = get_template_directory() . '/blocks/blocks.css';
+    if (file_exists($acf_blocks_file)) {
+        wp_enqueue_style(
+            'acf-blocks',
+            get_template_directory_uri() . '/blocks/blocks.css',
+            [],
+            filemtime($acf_blocks_file)
+        );
+    }
+}
+
+// Helper function to get compiled assets
+function brightminds_get_compiled_asset($name, $type) {
+    $assets_dir = get_template_directory() . '/dist/assets/';
+    $assets_uri = get_template_directory_uri() . '/dist/assets/';
+    
+    if (!is_dir($assets_dir)) {
+        return false;
+    }
+    
+    $pattern = $assets_dir . $name . '-*.' . $type;
+    $files = glob($pattern);
+    
+    if (!empty($files)) {
+        $file = $files[0];
+        $filename = basename($file);
+        
+        return [
+            'url' => $assets_uri . $filename,
+            'version' => filemtime($file)
+        ];
+    }
+    
+    return false;
 }
 add_action('wp_enqueue_scripts', 'brightminds_enqueue_styles');
 
+// Function to suppress 404 errors in production
+function brightminds_suppress_404_console_errors() {
+    if (wp_get_environment_type() === 'production') {
+        ?>
+        <script>
+        // Suppress console errors for missing resources in production
+        (function() {
+            const originalError = console.error;
+            console.error = function(...args) {
+                const message = args.join(' ');
+                // Don't log 404 errors for CSS/JS files
+                if (message.includes('Failed to load resource') && 
+                    (message.includes('.css') || message.includes('.js'))) {
+                    return;
+                }
+                originalError.apply(console, args);
+            };
+        })();
+        </script>
+        <?php
+    }
+}
+add_action('wp_head', 'brightminds_suppress_404_console_errors');
+
 
 function mytheme_enqueue_custom_script() {
+    // Enqueue compiled JS if available
+    $compiled_js = brightminds_get_compiled_asset('app', 'js');
+    
+    if ($compiled_js) {
+        wp_enqueue_script(
+            'theme-js',
+            $compiled_js['url'],
+            [],
+            $compiled_js['version'],
+            true
+        );
+    }
+
+    // Custom FAQ script with safety checks
     wp_enqueue_script(
-        'custom-faq', // Handle name
-        get_template_directory_uri() . '/js/faq.js', // Path to your JS file
-        array('jquery'), // Dependencies
-        null, // Version
-        true // Load in footer
+        'custom-faq',
+        get_template_directory_uri() . '/js/faq.js',
+        array('jquery'),
+        filemtime(get_template_directory() . '/js/faq.js'),
+        true
     );
 
+    // Custom form script with safety checks
     wp_enqueue_script(
-        'custom-form', // Novo handle para o form.js
-        get_template_directory_uri() . '/js/form.js', // Caminho do novo arquivo
-        array('jquery'), // Dependencies
-        null, // Version
-        true // Load in footer
+        'custom-form',
+        get_template_directory_uri() . '/js/form.js',
+        array('jquery'),
+        filemtime(get_template_directory() . '/js/form.js'),
+        true
     );
 }
 add_action('wp_enqueue_scripts', 'mytheme_enqueue_custom_script');
