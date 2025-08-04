@@ -34,3 +34,24 @@
 .acf-block-preview .professors-block {
     pointer-events: none;
 }
+
+/* =====================================================
+   Estilos para o bloco ACF - Formulário de Cadastro  
+   ===================================================== */
+
+.cadastro-form-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Preview no editor - Formulário */
+.acf-block-preview .cadastro-form-block {
+    pointer-events: none;
+}
+
+/* Ensure form is responsive */
+.cadastro-form-block form {
+    width: 100%;
+    max-width: 400px;
+}

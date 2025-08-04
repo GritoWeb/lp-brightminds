@@ -23,7 +23,8 @@ add_filter('acf/blocks/wrap_frontend_ouput', function($wrapper, $name) {
     $blocks_with_wrapper = array(
         'acf/primary-button',
         'acf/youtube-video',
-        'acf/faq'
+        'acf/faq',
+        'acf/cadastro-form'
     );
     
     if (in_array($name, $blocks_with_wrapper)) {

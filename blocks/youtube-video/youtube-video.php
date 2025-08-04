@@ -31,6 +31,22 @@ if (is_array($thumbnail_image)) {
 } else {
     $thumbnail_url = $thumbnail_image;
 }
+
+// Criar estilos dinâmicos baseados nas dimensões configuradas
+$container_styles = sprintf(
+    'width: %spx !important; height: %spx !important;',
+    esc_attr($video_width),
+    esc_attr($video_height)
+);
+
+$mobile_styles = sprintf(
+    '@media (max-width: 1023px) { #%s { height: %spx !important; width: 100%% !important; max-width: 100%% !important; } }',
+    esc_attr($block_id),
+    esc_attr($mobile_height)
+);
+
+// Debug - remover após testar
+echo "<!-- Debug: Width: {$video_width}px, Height: {$video_height}px, Mobile Height: {$mobile_height}px -->";
 ?>
 
 <div class="youtube-video-block md:w-1/2">
@@ -38,8 +54,8 @@ if (is_array($thumbnail_image)) {
         <!-- YouTube placeholder -->
         <div
             id="<?php echo esc_attr($block_id); ?>"
-            class="relative min-w-[340px] flex items-center justify-center cursor-pointer rounded-3xl border-2 border-transparent transition-all duration-300 focus:outline-none focus:border-blue-500 focus:shadow-lg w-full lg:w-[560px] h-[200px] lg:h-[315px]"
-            style="background-image: url('<?php echo esc_url($thumbnail_url); ?>'); background-size: cover; background-position: center;"
+            class="relative min-w-[340px] flex items-center justify-center cursor-pointer rounded-3xl border-2 border-transparent transition-all duration-300 focus:outline-none focus:border-blue-500 focus:shadow-lg"
+            style="<?php echo esc_attr($container_styles); ?>background-image: url('<?php echo esc_url($thumbnail_url); ?>'); background-size: cover; background-position: center;"
             aria-label="Play video"
             role="button"
             tabindex="0"
@@ -58,6 +74,41 @@ if (is_array($thumbnail_image)) {
         </div>
     </div>
 </div>
+
+<!-- CSS para responsividade com dimensões dinâmicas -->
+<style>
+/* Estilos específicos para este bloco */
+#<?php echo esc_attr($block_id); ?> {
+    width: <?php echo esc_attr($video_width); ?>px !important;
+    height: <?php echo esc_attr($video_height); ?>px !important;
+}
+
+<?php echo $mobile_styles; ?>
+
+/* Ensure minimum width on mobile */
+@media (max-width: 1023px) {
+    #<?php echo esc_attr($block_id); ?> {
+        min-width: 280px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* Ensure the video doesn't exceed container on very large screens */
+@media (min-width: 1024px) {
+    #<?php echo esc_attr($block_id); ?> {
+        max-width: <?php echo esc_attr($video_width); ?>px !important;
+        width: <?php echo esc_attr($video_width); ?>px !important;
+        height: <?php echo esc_attr($video_height); ?>px !important;
+    }
+}
+
+/* Override any potential Tailwind classes */
+.youtube-video-block #<?php echo esc_attr($block_id); ?> {
+    width: <?php echo esc_attr($video_width); ?>px !important;
+    height: <?php echo esc_attr($video_height); ?>px !important;
+}
+</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

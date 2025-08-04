@@ -42,243 +42,39 @@ function brightminds_enqueue_styles() {
         false
     );
 
-    // Function to get compiled CSS file
-    $compiled_css = brightminds_get_compiled_asset('app', 'css');
-    
-    if ($compiled_css) {
-        wp_enqueue_style(
-            'theme',
-            $compiled_css['url'],
-            [],
-            $compiled_css['version']
-        );
-    } else {
-        // Fallback para desenvolvimento
-        wp_enqueue_style(
-            'theme-dev',
-            get_template_directory_uri() . '/resources/css/app.css',
-            [],
-            time()
-        );
-    }
+    wp_enqueue_style(
+        'theme',
+        get_template_directory_uri() . '/dist/css/app.css',
+        [],
+        null
+    );
 
     // Carregar estilos dos blocos ACF
-    $acf_blocks_file = get_template_directory() . '/blocks/blocks.css';
-    if (file_exists($acf_blocks_file)) {
-        wp_enqueue_style(
-            'acf-blocks',
-            get_template_directory_uri() . '/blocks/blocks.css',
-            [],
-            filemtime($acf_blocks_file)
-        );
-    }
-}
-
-// Helper function to get compiled assets
-function brightminds_get_compiled_asset($name, $type) {
-    $assets_dir = get_template_directory() . '/dist/assets/';
-    $assets_uri = get_template_directory_uri() . '/dist/assets/';
-    
-    if (!is_dir($assets_dir)) {
-        return false;
-    }
-    
-    $pattern = $assets_dir . $name . '-*.' . $type;
-    $files = glob($pattern);
-    
-    if (!empty($files)) {
-        $file = $files[0];
-        $filename = basename($file);
-        
-        return [
-            'url' => $assets_uri . $filename,
-            'version' => filemtime($file)
-        ];
-    }
-    
-    return false;
+    wp_enqueue_style(
+        'acf-blocks',
+        get_template_directory_uri() . '/blocks/blocks.css',
+        [],
+        filemtime(get_template_directory() . '/blocks/blocks.css')
+    );
 }
 add_action('wp_enqueue_scripts', 'brightminds_enqueue_styles');
 
-// Function to suppress 404 errors in production
-function brightminds_suppress_404_console_errors() {
-    ?>
-    <script>
-    // Global error prevention for missing elements
-    (function() {
-        // Override getElementById to add safety check
-        const originalGetElementById = document.getElementById;
-        document.getElementById = function(id) {
-            const element = originalGetElementById.call(document, id);
-            if (!element) {
-                console.log('Element not found: ' + id);
-                // Return a mock element that prevents errors
-                return {
-                    addEventListener: function() {
-                        console.log('addEventListener called on non-existent element: ' + id);
-                    },
-                    style: {},
-                    classList: {
-                        add: function() {},
-                        remove: function() {},
-                        toggle: function() {},
-                        contains: function() { return false; }
-                    }
-                };
-            }
-            return element;
-        };
-
-        // Suppress console errors for missing resources in production
-        <?php if (wp_get_environment_type() === 'production') : ?>
-        const originalError = console.error;
-        console.error = function(...args) {
-            const message = args.join(' ');
-            // Don't log 404 errors for CSS/JS files
-            if (message.includes('Failed to load resource') && 
-                (message.includes('.css') || message.includes('.js'))) {
-                return;
-            }
-            originalError.apply(console, args);
-        };
-        <?php endif; ?>
-    })();
-    </script>
-    <?php
-}
-add_action('wp_head', 'brightminds_suppress_404_console_errors');
-add_action('wp_head', 'brightminds_fix_inline_scripts', 1); // High priority to load first
-
-// Additional protection against inline script errors
-function brightminds_protect_against_inline_errors() {
-    ?>
-    <script>
-    // Ultimate protection - override document.getElementById temporarily
-    (function() {
-        let scriptExecuting = false;
-        const originalGetElementById = document.getElementById;
-        
-        // Monkey patch getElementById to prevent null errors
-        document.getElementById = function(id) {
-            const element = originalGetElementById.call(document, id);
-            if (!element && !scriptExecuting) {
-                console.warn('Element with ID "' + id + '" not found, returning safe fallback');
-                return {
-                    addEventListener: function() {
-                        console.log('Prevented addEventListener on null element: ' + id);
-                    },
-                    style: { display: 'none' },
-                    classList: {
-                        add: function() {},
-                        remove: function() {},
-                        toggle: function() {},
-                        contains: function() { return false; }
-                    },
-                    removeAttribute: function() {},
-                    click: function() {}
-                };
-            }
-            return element;
-        };
-        
-        // Restore original function after page load
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById = originalGetElementById;
-                scriptExecuting = true;
-            }, 1000);
-        });
-    })();
-    </script>
-    <?php
-}
-add_action('wp_head', 'brightminds_protect_against_inline_errors', 0); // Highest priority
-function brightminds_fix_inline_scripts() {
-    ?>
-    <script>
-    // Comprehensive fix for missing element errors
-    document.addEventListener('DOMContentLoaded', function() {
-        // List of problematic element IDs
-        const problematicIds = ['openWhatsappForm', 'whatsappIframeContainer'];
-        
-        problematicIds.forEach(function(id) {
-            const element = document.getElementById(id);
-            if (!element) {
-                // Create a dummy element to prevent errors
-                const dummyElement = document.createElement('div');
-                dummyElement.id = id;
-                dummyElement.style.display = 'none';
-                dummyElement.addEventListener = function() {
-                    console.log('Event listener added to dummy element: ' + id);
-                };
-                document.body.appendChild(dummyElement);
-            }
-        });
-        
-        // Override any existing onclick handlers that might be problematic
-        const openWhatsappForm = document.getElementById('openWhatsappForm');
-        if (openWhatsappForm) {
-            // Remove any existing onclick attributes
-            openWhatsappForm.removeAttribute('onclick');
-            
-            // Add our safe event listener
-            openWhatsappForm.addEventListener('click', function(e) {
-                e.preventDefault();
-                const container = document.getElementById('whatsappIframeContainer');
-                if (container) {
-                    container.style.display = (container.style.display === 'block') ? 'none' : 'block';
-                } else {
-                    console.log('WhatsApp container not found - preventing error');
-                }
-            });
-        }
-    });
-    
-    // Additional safety: wrap any existing scripts that might be problematic
-    (function() {
-        const originalAddEventListener = Element.prototype.addEventListener;
-        Element.prototype.addEventListener = function(type, listener, options) {
-            try {
-                return originalAddEventListener.call(this, type, listener, options);
-            } catch (error) {
-                console.log('addEventListener error prevented:', error.message);
-            }
-        };
-    })();
-    </script>
-    <?php
-}
 
 function mytheme_enqueue_custom_script() {
-    // Enqueue compiled JS if available
-    $compiled_js = brightminds_get_compiled_asset('app', 'js');
-    
-    if ($compiled_js) {
-        wp_enqueue_script(
-            'theme-js',
-            $compiled_js['url'],
-            [],
-            $compiled_js['version'],
-            true
-        );
-    }
-
-    // Custom FAQ script with safety checks
     wp_enqueue_script(
-        'custom-faq',
-        get_template_directory_uri() . '/js/faq.js',
-        array('jquery'),
-        filemtime(get_template_directory() . '/js/faq.js'),
-        true
+        'custom-faq', // Handle name
+        get_template_directory_uri() . '/js/faq.js', // Path to your JS file
+        array('jquery'), // Dependencies
+        null, // Version
+        true // Load in footer
     );
 
-    // Custom form script with safety checks
     wp_enqueue_script(
-        'custom-form',
-        get_template_directory_uri() . '/js/form.js',
-        array('jquery'),
-        filemtime(get_template_directory() . '/js/form.js'),
-        true
+        'custom-form', // Novo handle para o form.js
+        get_template_directory_uri() . '/js/form.js', // Caminho do novo arquivo
+        array('jquery'), // Dependencies
+        null, // Version
+        true // Load in footer
     );
 }
 add_action('wp_enqueue_scripts', 'mytheme_enqueue_custom_script');
