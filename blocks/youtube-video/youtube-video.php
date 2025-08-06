@@ -97,7 +97,6 @@ if (is_array($thumbnail_image)) {
 .youtube-video-block {
     display: flex;
     justify-content: center;
-    width: 100%;
     padding: 20px 0;
 }
 
