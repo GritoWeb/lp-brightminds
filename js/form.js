@@ -1,16 +1,51 @@
-// Suprimir erros 404 no console
+// Suprimir erros 404 e de recursos não encontrados no console
 (function() {
+  // Interceptar console.error
   const originalError = console.error;
   console.error = function(...args) {
     const message = args.join(' ');
-    // Não mostrar erros 404 ou de recursos não encontrados
     if (message.includes('404') || 
         message.includes('Failed to load resource') || 
-        message.includes('the server responded with a status of 404')) {
+        message.includes('the server responded with a status of 404') ||
+        message.includes('ERR_ABORTED 404') ||
+        message.includes('Not Found')) {
       return;
     }
     originalError.apply(console, args);
   };
+
+  // Interceptar console.warn
+  const originalWarn = console.warn;
+  console.warn = function(...args) {
+    const message = args.join(' ');
+    if (message.includes('404') || 
+        message.includes('Failed to load resource') || 
+        message.includes('ERR_ABORTED 404') ||
+        message.includes('Not Found')) {
+      return;
+    }
+    originalWarn.apply(console, args);
+  };
+
+  // Interceptar console.log para casos específicos
+  const originalLog = console.log;
+  console.log = function(...args) {
+    const message = args.join(' ');
+    if (message.includes('GET') && message.includes('404') && message.includes('Not Found')) {
+      return;
+    }
+    originalLog.apply(console, args);
+  };
+
+  // Interceptar erros de rede não capturados
+  window.addEventListener('error', function(e) {
+    if (e.message && (e.message.includes('404') || 
+        e.message.includes('Failed to load resource') ||
+        e.message.includes('ERR_ABORTED 404'))) {
+      e.preventDefault();
+      return false;
+    }
+  }, true);
 })();
 
 // Aguardar o DOM carregar
