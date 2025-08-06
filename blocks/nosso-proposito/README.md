@@ -1,184 +1,136 @@
 # Bloco ACF: Nosso Propósito
 
 ## 📝 Descrição
-Bloco para apresentar a missão, visão ou propósito da empresa/instituição de forma visual e impactante. Combina imagem, textos inspiracionais e call-to-action.
+Bloco dedicado para apresentar a missão, visão, valores e propósito da instituição de forma elegante e impactante. Ideal para seções sobre a empresa/instituição.
 
 ## 🔧 Recursos
-- ✅ Imagem de destaque configurável
-- ✅ Título principal editável
-- ✅ Dois parágrafos de conteúdo
-- ✅ Botão de call-to-action
-- ✅ Layout responsivo
-- ✅ Design visual impactante
-- ✅ Backend personalizado
-- ✅ Valores padrão inspiracionais
+- ✅ Conteúdo rico e editável
+- ✅ Layout flexível e responsivo
+- ✅ Suporte a múltiplas seções de conteúdo
+- ✅ Tipografia hierárquica
+- ✅ Cores personalizáveis
+- ✅ Imagens de apoio opcionais
+- ✅ Call-to-action integrado
+- ✅ Design moderno e profissional
 
 ## 📂 Estrutura de Arquivos
 ```
 nosso-proposito/
 ├── nosso-proposito.php  # Template principal do bloco
 ├── register.php         # Registro do bloco ACF
-├── backend.php          # Interface de configuração
+├── backend.php          # Preview no editor
 └── README.md           # Documentação
 ```
 
 ## ⚙️ Campos Editáveis no Backend
 
-### 🖼️ Conteúdo Visual
-- **Imagem:** Upload de imagem representativa
-  - Tipo: Imagem ACF
-  - Formato: Array com URL, alt, etc.
+### 📝 Conteúdo Principal
+- **Título Principal:** Título da seção (ex: "Nosso Propósito")
+- **Subtítulo:** Texto secundário de apoio
+- **Texto Principal:** Conteúdo principal com editor rico
+- **Texto Secundário:** Parágrafo adicional opcional
 
-### 📝 Conteúdo Textual
-- **Título:** Título principal da seção
-  - Padrão: "Nosso propósito"
-  - Tipo: Texto
+### 🖼️ Elementos Visuais
+- **Imagem Principal:** Imagem de destaque da seção
+- **Imagem Secundária:** Imagem de apoio opcional
+- **Vídeo:** Incorporação de vídeo relacionado (opcional)
 
-- **Parágrafo 1:** Primeiro texto descritivo
-  - Padrão: "Inspirar nossos alunos a realizar coisas extraordinárias. E a continuar a aprender por toda a vida."
-  - Tipo: Textarea
+### 🎨 Personalização Visual
+- **Cor do Título:** Personalização da cor do título principal
+- **Cor do Subtítulo:** Cor do texto secundário
+- **Cor do Texto:** Cor do conteúdo principal
+- **Cor de Fundo:** Cor de fundo da seção
+- **Estilo do Layout:** Variações de layout (texto + imagem, centralizado, etc.)
 
-- **Parágrafo 2:** Segundo texto (citação ou complemento)
-  - Padrão: '"What one can be, one must be", Abraham Maslow.'
-  - Tipo: Textarea
-
-### 🎯 Call-to-Action
-- **Texto do Botão:** Label do botão de ação
-  - Padrão: "Quero que meus filhos tenham um futuro brilhante"
-  - Tipo: Texto
-
+### 🔗 Call-to-Action
+- **Texto do Botão:** Texto do botão de ação
 - **URL do Botão:** Link de destino
-  - Padrão: "#"
-  - Tipo: URL
+- **Estilo do Botão:** Variações visuais do botão
+- **Cor do Botão:** Personalização das cores
 
-## 🎨 Design e Layout
-
-### 📐 Estrutura Visual
-- **Layout híbrido:** Combinação de imagem e texto
-- **Hierarquia clara:** Título, parágrafos, botão
-- **Espaçamento:** Breathing room para legibilidade
-- **Alinhamento:** Balanceado e profissional
-
-### 🎯 Elementos Visuais
-- **Imagem responsiva:** Adapta-se ao container
-- **Tipografia:** Hierarquia clara de textos
-- **Botão destacado:** Call-to-action proeminente
-- **Cores harmônicas:** Integração com o tema
+## 🎨 Características Visuais
+- **Layout equilibrado:** Distribuição harmoniosa de conteúdo e imagem
+- **Tipografia expressiva:** Hierarquia clara de informações
+- **Espaçamento generoso:** Breathing room adequado
+- **Cores personalizáveis:** Adaptável à identidade visual
+- **Elementos visuais:** Suporte a imagens e vídeos
 
 ## 📱 Responsividade
-- **Desktop:** Layout lado a lado (imagem + texto)
-- **Tablet:** Adaptação para telas médias
-- **Mobile:** Layout empilhado (imagem sobre texto)
-- **Flexibilidade:** Elementos se ajustam automaticamente
+- **Desktop:** Layout em duas colunas (texto + imagem)
+- **Tablet:** Adaptação com reordenação de elementos
+- **Mobile:** Layout stack vertical otimizado
+- **Imagens responsivas:** Redimensionamento automático
+- **Texto fluido:** Ajustes de tamanho por breakpoint
 
-## 🚀 Backend Personalizado
-
-### 🎛️ Interface de Configuração
-- **Backend.php:** Interface customizada quando não configurado
-- **Formulário estruturado:** Campos organizados logicamente
-- **Preview visual:** Representação do resultado final
-- **Valores padrão:** Conteúdo inspiracional pré-definido
-
-### 📋 Estados do Bloco
-- **Não configurado:** Interface do backend.php
-- **Configurado:** Renderização normal do conteúdo
-- **Admin vazio:** Mensagem explicativa
+## 🔗 Funcionalidades Avançadas
+- **Editor WYSIWYG:** Conteúdo rico com formatação
+- **Media integration:** Suporte a imagens e vídeos
+- **Color system:** Sistema de cores flexível
+- **Layout variants:** Múltiplas opções de layout
+- **CTA integration:** Call-to-action integrado
 
 ## 📋 Como Usar
+1. **No Editor:**
+   - Adicione o bloco "Nosso Propósito" da categoria "BrightMinds"
+   - Configure título e subtítulo da seção
+   - Adicione o conteúdo principal no editor rico
+   - Faça upload das imagens ou vídeos
+   - Personalize cores e estilo do layout
+   - Configure call-to-action se desejado
 
-### 🏗️ No Editor
-1. Adicione o bloco "Nosso Propósito" da categoria "BrightMinds"
-2. Configure no painel lateral:
-   - Faça upload de uma imagem representativa
-   - Personalize o título
-   - Adapte os parágrafos para sua realidade
-   - Configure o texto e URL do botão
-3. Visualize o resultado no editor
+2. **No Frontend:**
+   - Seção apresentada de forma elegante e profissional
+   - Layout responsivo se adapta a diferentes telas
+   - Conteúdo bem estruturado e legível
+   - Call-to-action em destaque
 
-### 👀 No Frontend
-- Seção visualmente impactante
-- Imagem e texto harmonizados
-- Mensagem inspiracional clara
-- Botão para conversão/ação
+## 🚀 Funcionalidades Técnicas
+- **Semantic HTML:** Markup estruturado para SEO
+- **Responsive images:** Otimização automática
+- **CSS Grid/Flexbox:** Layout moderno
+- **Custom properties:** Sistema de cores CSS
+- **Performance:** Carregamento otimizado
 
-## 🎨 Estrutura CSS
+## ⚠️ Observações
+- Ideal para conteúdo institucional e valores da empresa
+- Suporte completo a formatação rica no texto principal
+- Imagens devem ser otimizadas para web (WebP recomendado)
+- Call-to-action opcional, mas recomendado para engajamento
+- Layout se adapta automaticamente ao conteúdo disponível
 
-### 📦 Classes Principais
-```css
-.nosso-proposito-block   /* Container principal */
-.proposito-image         /* Container da imagem */
-.proposito-content       /* Container do conteúdo */
-.proposito-title         /* Título principal */
-.proposito-paragraph     /* Parágrafos de texto */
-.proposito-button        /* Botão de call-to-action */
-```
+## 🔧 Configuração Técnica
+- **ACF Fields:** Campos flexíveis para conteúdo variado
+- **CSS Custom Properties:** Cores personalizáveis
+- **Responsive Design:** Mobile-first approach
+- **Media queries:** Breakpoints otimizados
+- **Accessibility:** ARIA labels e estrutura semântica
 
-### 🎯 Layout Flexível
-- **Flexbox/Grid:** Layout moderno e responsivo
-- **Adaptive:** Ajuste automático a diferentes telas
-- **Proportional:** Elementos proporcionais
-- **Balanced:** Equilíbrio visual entre elementos
-
-## 🔗 Integrações
-- **WordPress Media Library:** Upload e gestão de imagens
-- **ACF Fields:** Campos personalizados estruturados
-- **Responsive Images:** Diferentes tamanhos automaticamente
-- **SEO Friendly:** Estrutura semântica otimizada
-
-## ⚠️ Recursos de Segurança
-- **Verificação ABSPATH:** Previne acesso direto
-- **Sanitização:** Todos os outputs são sanitizados
-- **Escape de URLs:** Links seguros
-- **Conditional Loading:** Backend carregado apenas quando necessário
-
-## 🎯 Estados e Condições
-
-### 🚫 Sem Configuração (Admin)
-```php
-if (empty(get_field('titulo')) && is_admin()) {
-    include_once 'backend.php';
-    return;
-}
-```
-
-### ✅ Configurado
-```php
-// Renderiza o conteúdo completo
-$titulo = get_field('titulo') ?: 'Nosso propósito';
-// ... outros campos com fallbacks
-```
-
-### 📱 Tratamento de Imagem
-```php
-if (is_array($imagem)) {
-    $imagem_url = $imagem['url'];
-    $imagem_alt = $imagem['alt'];
-}
-```
-
-## 📊 Performance
-- **Lazy Loading:** Imagens carregadas sob demanda
-- **Semantic HTML:** Estrutura limpa e acessível
-- **CSS Otimizado:** Estilos mínimos necessários
-- **Responsive Images:** WordPress native responsive
+## 💡 Dicas de Uso
+- **Conteúdo autêntico:** Use linguagem genuína e pessoal
+- **Imagens relevantes:** Escolha imagens que reflitam os valores
+- **Hierarquia clara:** Organize informações por importância
+- **Call-to-action claro:** Use verbos de ação diretos
+- **Teste de legibilidade:** Verifique contraste das cores
 
 ## 🎯 Casos de Uso Ideais
-- **Páginas sobre** de empresas e instituições
-- **Landing pages** com propósito/missão
-- **Sites educacionais** com filosofia pedagógica
-- **Páginas institucionais** com valores da empresa
-- **Seções inspiracionais** em qualquer contexto
+- Apresentação da missão da empresa
+- Página "Sobre Nós"
+- Valores e filosofia institucional
+- História da organização
+- Propósito e objetivos
+- Compromissos com estudantes/clientes
 
-## 💡 Valores Padrão Inspiracionais
-O bloco vem com conteúdo padrão motivacional:
-- **Título:** "Nosso propósito"
-- **Parágrafo 1:** Sobre inspirar alunos extraordinários
-- **Parágrafo 2:** Citação de Abraham Maslow
-- **Botão:** "Quero que meus filhos tenham um futuro brilhante"
+## 📝 Exemplos de Conteúdo
+### Títulos Sugeridos:
+- "Nosso Propósito"
+- "Nossa Missão"
+- "Por Que Existimos"
+- "Nossos Valores"
+- "Nossa História"
 
-## 🔄 Customização e Manutenção
-- **Fácil edição:** Todos os campos editáveis via painel lateral
-- **Imagens flexíveis:** Upload direto pela Media Library
-- **Textos adaptáveis:** Conteúdo personalizável para qualquer contexto
-- **Botão configurável:** URL e texto totalmente editáveis
-- **Design consistente:** Mantém identidade visual do tema
+### Estrutura de Conteúdo:
+1. **Introdução:** Declaração do propósito
+2. **Desenvolvimento:** Explicação detalhada
+3. **Valores:** Princípios fundamentais
+4. **Compromisso:** O que prometemos entregar
+5. **Call-to-action:** Convite à ação

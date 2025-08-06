@@ -1,127 +1,102 @@
-# Bloco ACF: FAQ (Dúvidas Frequentes)
+# Bloco ACF: FAQ (Perguntas Frequentes)
 
 ## 📝 Descrição
-Bloco para criação de seções de perguntas e respostas frequentes com funcionalidade de acordeão (expandir/recolher). Interface intuitiva e totalmente responsiva.
+Bloco para criação de seções de perguntas frequentes com accordion interativo, permitindo múltiplas perguntas e respostas organizadas de forma elegante e funcional.
 
 ## 🔧 Recursos
-- ✅ Título da seção editável
 - ✅ Múltiplas perguntas e respostas
-- ✅ Sistema de acordeão (expansão/recolhimento)
-- ✅ Animações suaves
-- ✅ Design responsivo
-- ✅ Ícones indicativos (+/-)
-- ✅ Comportamento inteligente (fecha outros ao abrir um)
-- ✅ Preview no editor
-- ✅ Placeholder quando não configurado
+- ✅ Accordion interativo com JavaScript
+- ✅ Títulos de seção configuráveis
+- ✅ Estilos personalizados
+- ✅ Animações suaves de abertura/fechamento
+- ✅ Totalmente responsivo
+- ✅ Acessibilidade completa
+- ✅ Expansão/colapso individual
 
 ## 📂 Estrutura de Arquivos
 ```
 faq/
-├── faq.php             # Template principal do bloco
-├── register.php        # Registro do bloco ACF
-├── backend.php         # Preview no editor
-└── README.md          # Documentação
+├── faq.php            # Template principal do bloco
+├── register.php       # Registro do bloco ACF
+├── backend.php        # Preview no editor
+└── README.md         # Documentação
 ```
 
 ## ⚙️ Campos Editáveis no Backend
 
-### 📋 Configuração Principal
-- **Título da Seção:** Título principal do FAQ
-  - Padrão: "Dúvidas Frequentes"
-  - Tipo: Texto
+### 📝 Conteúdo Principal
+- **Título da Seção:** Título principal da seção FAQ (ex: "Perguntas Frequentes")
+- **Subtítulo:** Texto descritivo opcional abaixo do título
 
-### ❓ Itens do FAQ
-- **Perguntas e Respostas:** Repeater com múltiplos itens
-  - **Pergunta:** Campo de texto para a pergunta
-  - **Resposta:** Editor de texto rico (WYSIWYG) para resposta detalhada
-  - **Quantidade:** Ilimitada de perguntas
+### ❓ Lista de Perguntas
+- **Pergunta:** Texto da pergunta (campo de texto)
+- **Resposta:** Resposta detalhada (editor de texto rico)
+- **[Repetível]** Permite adicionar quantas perguntas desejar
 
-## 🎨 Design e Layout
+### 🎨 Configurações de Estilo
+- **Cor do Título:** Cor personalizada para o título da seção
+- **Cor das Perguntas:** Cor do texto das perguntas
+- **Cor das Respostas:** Cor do texto das respostas
+- **Cor de Fundo:** Cor de fundo dos itens do FAQ
 
-### 📐 Estrutura Visual
-- **Container:** Largura total com padding responsivo
-- **Título:** Centralizado, fonte grande e negrito
-- **Items:** Lista vertical com espaçamento
-- **Bordas:** Arredondadas para visual moderno
-
-### 🎯 Estados Visuais
-- **Fechado:** Pergunta visível, resposta oculta, ícone "+"
-- **Aberto:** Pergunta e resposta visíveis, ícone "-"
-- **Hover:** Efeito visual na pergunta
-- **Transição:** Animação suave de 300ms
+## 🎨 Características Visuais
+- **Design clean:** Layout limpo e organizado
+- **Ícones indicativos:** Setas que indicam estado (aberto/fechado)
+- **Transições suaves:** Animações CSS para abertura/fechamento
+- **Tipografia clara:** Hierarquia visual bem definida
+- **Espaçamento consistente:** Padding e margin balanceados
 
 ## 📱 Responsividade
-- **Desktop:** Layout otimizado para telas grandes
-- **Tablet:** Adaptação para telas médias
-- **Mobile:** Design compacto para smartphones
-- **Touch:** Funcionalidade touch-friendly
+- **Mobile-first:** Otimizado para dispositivos móveis
+- **Breakpoints:** Adaptação em tablets e desktops
+- **Touch-friendly:** Área de toque adequada para mobile
+- **Texto fluido:** Tamanhos responsivos de fonte
 
-## 🚀 Funcionalidades JavaScript
-
-### 🎭 Comportamento do Acordeão
-- **Click to Toggle:** Clique para abrir/fechar
-- **Auto-close:** Fecha outros itens ao abrir um novo
-- **Smooth Animation:** Animação baseada em `scrollHeight`
-- **Height Calculation:** Altura dinâmica baseada no conteúdo
-
-### 🔧 Inicialização
-```javascript
-document.addEventListener('DOMContentLoaded', () => {
-    // Seleciona todos os itens FAQ
-    const faqItems = document.querySelectorAll('.faq-item');
-    
-    // Adiciona event listeners
-    // Calcula altura dinamicamente
-    // Aplica classes de estado
-});
-```
+## 🔗 Funcionalidades JavaScript
+- **Accordion dinâmico:** Arquivo `js/faq.js` gerencia interações
+- **Estado individual:** Cada pergunta abre/fecha independentemente
+- **Prevenção de erro:** Verificações de segurança antes de adicionar eventos
+- **Performance:** Event delegation para eficiência
+- **Acessibilidade:** Suporte a navegação por teclado
 
 ## 📋 Como Usar
+1. **No Editor:**
+   - Adicione o bloco "FAQ" da categoria "BrightMinds"
+   - Configure título e subtítulo da seção
+   - Adicione perguntas e respostas usando o repetidor
+   - Personalize cores conforme o design
+   - Visualize o preview no editor
 
-### 🏗️ No Editor
-1. Adicione o bloco "FAQ" da categoria "BrightMinds"
-2. Configure o título da seção
-3. Adicione perguntas e respostas usando o repeater
-4. Use o editor WYSIWYG para formatação rica nas respostas
-5. Visualize o preview no editor
+2. **No Frontend:**
+   - Seção exibida com todas as perguntas fechadas
+   - Clique em qualquer pergunta para expandir/recolher
+   - Múltiplas perguntas podem estar abertas simultaneamente
+   - JavaScript carrega automaticamente
 
-### 👀 No Frontend
-1. FAQ aparece com todas as respostas fechadas
-2. Usuário clica na pergunta para expandir
-3. Resposta abre com animação suave
-4. Outros itens fecham automaticamente
-5. Clique novamente para fechar
+## 🚀 Funcionalidades Avançadas
+- **Editor WYSIWYG:** Respostas com formatação rica (negrito, itálico, links)
+- **Sanitização:** Conteúdo sanitizado para segurança
+- **SEO Friendly:** Markup semântico para melhor indexação
+- **Schema.org:** Potencial para markup estruturado
+- **Lazy interaction:** JavaScript carrega apenas quando necessário
 
-## 🎨 Classes CSS Aplicadas
-```css
-.faq-block          /* Container principal */
-.faq-item           /* Item individual */
-.faq-question       /* Pergunta clicável */
-.faq-answer         /* Container da resposta */
-.open               /* Estado aberto */
-```
+## ⚠️ Observações
+- Requer o arquivo `js/faq.js` para funcionalidade completa
+- Funciona sem JavaScript (graceful degradation)
+- Cores personalizadas aplicadas via CSS inline
+- Suporte a HTML nas respostas (sanitizado)
+- Repetidor ACF permite quantidade ilimitada de itens
 
-## 🔗 Integrações
-- **JavaScript externo:** `/js/faq.js` para funcionalidade
-- **CSS dos blocos:** Estilos no `blocks.css`
-- **Verificações de segurança:** Elementos validados antes de uso
-- **Fallbacks:** Mensagens quando não configurado
+## 🔧 Configuração Técnica
+- **ACF Repeater:** Utiliza campo repetidor para lista dinâmica
+- **CSS Flexbox:** Layout responsivo moderno
+- **JavaScript ES6:** Código moderno e eficiente
+- **Accessibility:** ARIA labels e navegação por teclado
+- **Progressive Enhancement:** Funciona com e sem JavaScript
 
-## ⚠️ Recursos de Segurança
-- **Verificação ABSPATH:** Previne acesso direto ao arquivo
-- **Sanitização:** Todos os outputs são sanitizados
-- **Verificação de elementos:** JavaScript verifica existência antes de usar
-- **Fallback graceful:** Comportamento seguro quando elementos não existem
-
-## 🎯 Casos de Uso Ideais
-- **Seção de dúvidas** em landing pages
-- **FAQ de produtos** em páginas de vendas
-- **Suporte ao cliente** em sites institucionais
-- **Perguntas frequentes** em qualquer contexto
-- **Documentação** organizada por tópicos
-
-## 📊 Performance
-- **Lazy JavaScript:** Carrega apenas quando necessário
-- **CSS mínimo:** Estilos otimizados
-- **Animações eficientes:** Usando CSS transforms
-- **SEO friendly:** Conteúdo indexável pelos mecanismos de busca
+## 💡 Dicas de Uso
+- **Organize por importância:** Coloque perguntas mais frequentes primeiro
+- **Respostas concisas:** Mantenha respostas claras e objetivas
+- **Links úteis:** Use links nas respostas para recursos adicionais
+- **Teste mobile:** Verifique funcionamento em dispositivos móveis
+- **SEO:** Use palavras-chave relevantes nas perguntas

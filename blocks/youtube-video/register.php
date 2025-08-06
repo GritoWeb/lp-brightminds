@@ -26,6 +26,7 @@ if (function_exists('acf_register_block_type')) {
                     'thumbnail_image' => '/wp-content/uploads/2025/07/thumb-video.webp',
                     'video_width' => '560',
                     'video_height' => '315',
+                    'mobile_width' => '320',
                     'mobile_height' => '200'
                 )
             )
@@ -105,6 +106,19 @@ if (function_exists('acf_add_local_field_group')) {
                         'min' => 150,
                         'max' => 500,
                         'step' => 5,
+                        'append' => 'px',
+                    ),
+                    array(
+                        'key' => 'field_mobile_width',
+                        'label' => 'Largura (Mobile)',
+                        'name' => 'mobile_width',
+                        'type' => 'number',
+                        'instructions' => 'Largura do vídeo em pixels para dispositivos móveis',
+                        'required' => 0,
+                        'default_value' => 320,
+                        'min' => 280,
+                        'max' => 500,
+                        'step' => 10,
                         'append' => 'px',
                     ),
                 ),

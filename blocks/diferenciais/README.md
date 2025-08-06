@@ -1,161 +1,124 @@
 # Bloco ACF: Diferenciais
 
 ## 📝 Descrição
-Bloco para destacar os principais diferenciais, vantagens ou características especiais de um produto, serviço ou empresa. Layout visual atrativo com ícones e descrições.
+Bloco para destacar os principais diferenciais, vantagens ou características únicas de um produto, serviço ou instituição. Ideal para seções que demonstram valor e benefícios.
 
 ## 🔧 Recursos
-- ✅ Título da seção editável
-- ✅ Múltiplos diferenciais configuráveis
-- ✅ Ícones personalizáveis para cada diferencial
-- ✅ Título e descrição individuais
-- ✅ Layout responsivo em grid
-- ✅ Design visual atrativo
-- ✅ Backend intuitivo para configuração
-- ✅ Preview no editor
+- ✅ Lista de diferenciais organizados
+- ✅ Ícones personalizáveis para cada item
+- ✅ Títulos e descrições editáveis
+- ✅ Layout em grid responsivo
+- ✅ Cores personalizáveis
+- ✅ Tipografia hierárquica
+- ✅ Design moderno e atrativo
+- ✅ Quantidade ilimitada de itens
 
 ## 📂 Estrutura de Arquivos
 ```
 diferenciais/
-├── diferenciais.php     # Template principal do bloco
-├── register.php         # Registro do bloco ACF
-├── backend.php          # Interface de configuração
-└── README.md           # Documentação
+├── diferenciais.php   # Template principal do bloco
+├── register.php       # Registro do bloco ACF
+├── backend.php        # Preview no editor
+└── README.md         # Documentação
 ```
 
 ## ⚙️ Campos Editáveis no Backend
 
-### 📋 Configuração Principal
-- **Título da Seção:** Título principal da seção
-  - Padrão: "Diferenciais"
-  - Tipo: Texto
+### 📝 Conteúdo Principal
+- **Título da Seção:** Título principal (ex: "Nossos Diferenciais")
+- **Subtítulo:** Descrição opcional da seção
+- **Texto Introdutório:** Parágrafo explicativo sobre os diferenciais
 
-### ⭐ Itens dos Diferenciais
-Cada diferencial contém:
-- **Ícone:** Ícone visual para representar o diferencial
-- **Título:** Nome/título do diferencial
-- **Descrição:** Explicação detalhada do diferencial
+### ⭐ Lista de Diferenciais
+Para cada diferencial é possível configurar:
 
-## 🎨 Design e Layout
+- **Ícone:** Seleção de ícone ou upload de imagem personalizada
+- **Título:** Nome do diferencial (ex: "Professores Especialistas")
+- **Descrição:** Explicação detalhada do benefício
+- **Cor do Ícone:** Personalização da cor do ícone
+- **[Repetível]** Adicione quantos diferenciais desejar
 
-### 📐 Estrutura Visual
-- **Container:** Seção completa com padding responsivo
-- **Título:** Centralizado e destacado
-- **Grid:** Layout em grid responsivo para os itens
-- **Cards:** Cada diferencial em card individual
+### 🎨 Configurações Visuais
+- **Cor do Título Principal:** Personalização do título da seção
+- **Cor dos Títulos dos Itens:** Cor dos títulos de cada diferencial
+- **Cor do Texto:** Cor das descrições
+- **Esquema de Cores:** Predefinições de cores harmoniosas
 
-### 🎯 Elementos Visuais
-- **Ícones:** Elementos visuais para identificação rápida
-- **Hierarquia:** Títulos e descrições bem definidos
-- **Espaçamento:** Breathing room adequado entre elementos
-- **Cores:** Esquema harmônico com o tema
+## 🎨 Características Visuais
+- **Ícones destacados:** Visual atrativo com ícones grandes
+- **Cards organizados:** Layout em cards com espaçamento adequado
+- **Hierarquia clara:** Títulos e descrições bem definidos
+- **Cores personalizáveis:** Adaptável à identidade visual
+- **Espaçamento consistente:** Design equilibrado e profissional
 
 ## 📱 Responsividade
-- **Desktop:** Grid de múltiplas colunas
-- **Tablet:** Adaptação para telas médias
-- **Mobile:** Layout em coluna única ou duas colunas
-- **Flexibilidade:** Ajuste automático baseado no conteúdo
+- **Desktop (lg+):** Grid de 3-4 colunas
+- **Tablet (md):** Grid de 2 colunas
+- **Mobile (sm):** Lista vertical (1 coluna)
+- **Ícones adaptáveis:** Tamanhos responsivos
+- **Texto fluido:** Ajuste automático da tipografia
 
-## 🚀 Backend Personalizado
-
-### 🎛️ Interface de Configuração
-- **Backend.php:** Interface customizada para configuração
-- **Formulário estruturado:** Campos organizados e intuitivos
-- **Preview em tempo real:** Visualização das mudanças
-- **Validação:** Verificação de campos obrigatórios
-
-### 📋 Estados do Bloco
-- **Não configurado:** Mensagem explicativa no editor
-- **Em configuração:** Interface do backend.php
-- **Configurado:** Exibição normal dos diferenciais
+## 🔗 Funcionalidades de Design
+- **CSS Grid/Flexbox:** Layout moderno e flexível
+- **Icon library:** Suporte a Font Awesome ou ícones personalizados
+- **Custom colors:** Sistema de cores personalizáveis
+- **Hover effects:** Efeitos sutis de interação
+- **Visual hierarchy:** Organização clara da informação
 
 ## 📋 Como Usar
+1. **No Editor:**
+   - Adicione o bloco "Diferenciais" da categoria "BrightMinds"
+   - Configure título e texto introdutório
+   - Adicione diferenciais usando o campo repetidor
+   - Para cada item: ícone, título, descrição e cor
+   - Personalize esquema de cores da seção
 
-### 🏗️ No Editor
-1. Adicione o bloco "Diferenciais" da categoria "BrightMinds"
-2. Configure o título da seção no painel lateral
-3. Adicione diferenciais usando o campo repeater:
-   - Escolha um ícone representativo
-   - Defina o título do diferencial
-   - Escreva uma descrição clara
-4. Visualize o resultado no editor
+2. **No Frontend:**
+   - Grid responsivo exibe todos os diferenciais
+   - Ícones e textos bem organizados
+   - Layout se adapta à tela automaticamente
+   - Cores aplicadas conforme configuração
 
-### 👀 No Frontend
-- Seção bem estruturada com título
-- Grid organizado de diferenciais
-- Cada item com ícone, título e descrição
-- Layout profissional e atrativo
+## 🚀 Funcionalidades Avançadas
+- **Icon management:** Sistema flexível de ícones
+- **Color system:** Paleta de cores personalizável
+- **SEO optimized:** Markup semântico para indexação
+- **Performance:** CSS otimizado e carregamento eficiente
+- **Accessibility:** Suporte a leitores de tela
 
-## 🎨 Estrutura CSS
+## ⚠️ Observações
+- Ícones devem ser consistentes em estilo para melhor visual
+- Descrições equilibradas mantêm layout harmonioso
+- Máximo de 6 itens recomendado para não sobrecarregar
+- Cores devem ter contraste adequado para acessibilidade
+- Funciona perfeitamente sem JavaScript
 
-### 📦 Classes Principais
-```css
-.diferenciais-block     /* Container principal */
-.diferenciais-grid      /* Grid dos itens */
-.diferencial-item       /* Item individual */
-.diferencial-icon       /* Ícone do diferencial */
-.diferencial-title      /* Título do diferencial */
-.diferencial-description /* Descrição do diferencial */
-```
+## 🔧 Configuração Técnica
+- **ACF Repeater:** Lista dinâmica de diferenciais
+- **CSS Custom Properties:** Sistema de cores flexível
+- **Responsive Grid:** Layout adaptável
+- **Icon fonts:** Suporte a bibliotecas de ícones
+- **Semantic markup:** HTML estruturado e acessível
 
-### 🎯 Layout Grid
-- **Auto-fit:** Colunas que se ajustam automaticamente
-- **Min-width:** Largura mínima para manter legibilidade
-- **Gap:** Espaçamento consistente entre itens
-- **Responsive:** Adaptação automática a diferentes telas
-
-## 🔗 Integrações
-- **ACF Repeater:** Para múltiplos diferenciais
-- **Icon Library:** Integração com biblioteca de ícones
-- **WordPress Editor:** Preview nativo no Gutenberg
-- **CSS Grid:** Layout moderno e flexível
-
-## ⚠️ Recursos de Segurança
-- **Verificação ABSPATH:** Previne acesso direto ao arquivo
-- **Sanitização:** Todos os outputs são sanitizados
-- **Validação:** Campos obrigatórios verificados
-- **Conditional Loading:** Backend carregado apenas quando necessário
-
-## 🎯 Estados e Condições
-
-### 🚫 Sem Configuração (Admin)
-```php
-if (empty($diferenciais) && is_admin()) {
-    // Mostra interface de configuração
-    include_once 'backend.php';
-}
-```
-
-### ✅ Com Configuração
-```php
-// Renderiza os diferenciais normalmente
-foreach ($diferenciais as $diferencial) {
-    // Exibe cada item
-}
-```
-
-### 👀 Frontend Vazio
-```php
-if (empty($diferenciais) && !is_admin()) {
-    return; // Não mostra nada
-}
-```
-
-## 📊 Performance
-- **Conditional Loading:** Backend carregado apenas quando necessário
-- **CSS Otimizado:** Estilos mínimos e eficientes
-- **Semantic HTML:** Estrutura limpa e acessível
-- **Lazy Loading:** Ícones e imagens otimizadas
+## 💡 Dicas de Uso
+- **Consistência visual:** Use mesmo estilo de ícones
+- **Textos concisos:** Mantenha descrições objetivas
+- **Ordem estratégica:** Organize por importância
+- **Cores harmônicas:** Use paleta de cores coerente
+- **Teste em dispositivos:** Verifique em diferentes telas
 
 ## 🎯 Casos de Uso Ideais
-- **Landing pages** destacando vantagens do produto
-- **Páginas de serviços** com benefícios oferecidos
-- **Sites institucionais** com diferenciais da empresa
-- **E-commerce** com características dos produtos
-- **Páginas de vendas** com argumentos de venda
+- Vantagens de produtos/serviços
+- Benefícios de cursos online
+- Características da instituição
+- Diferenciais competitivos
+- Pontos fortes da metodologia
+- Recursos exclusivos oferecidos
 
-## 🔄 Manutenção e Atualizações
-- **Fácil edição:** Interface intuitiva no painel lateral
-- **Adicionar/Remover:** Diferenciais dinamicamente
-- **Modificar ícones:** Biblioteca integrada de ícones
-- **Atualizar textos:** Sem necessidade de código
-- **Reordenar:** Arrastar e soltar no repeater ACF
+## 📊 Exemplos de Diferenciais
+- 🎓 Professores Especialistas
+- 📱 Plataforma Mobile
+- 🏆 Certificação Reconhecida
+- 💬 Suporte 24/7
+- 📚 Material Exclusivo
+- 🎯 Metodologia Prática

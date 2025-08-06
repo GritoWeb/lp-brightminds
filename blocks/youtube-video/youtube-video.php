@@ -12,6 +12,7 @@ $video_dimensions = get_field('video_dimensions');
 $video_width = $video_dimensions['video_width'] ?? '560';
 $video_height = $video_dimensions['video_height'] ?? '315';
 $mobile_height = $video_dimensions['mobile_height'] ?? '200';
+$mobile_width = $video_dimensions['mobile_width'] ?? '320';
 
 // ID único para o bloco
 $block_id = 'youtube-embed-' . $block['id'];
@@ -40,13 +41,15 @@ $container_styles = sprintf(
 );
 
 $mobile_styles = sprintf(
-    '@media (max-width: 1023px) { #%s { height: %spx !important; width: 100%% !important; max-width: 100%% !important; } }',
+    '@media (max-width: 1023px) { #%s { height: %spx !important; width: %spx !important; max-width: %spx !important; } }',
     esc_attr($block_id),
-    esc_attr($mobile_height)
+    esc_attr($mobile_height),
+    esc_attr($mobile_width),
+    esc_attr($mobile_width)
 );
 
 // Debug - remover após testar
-echo "<!-- Debug: Width: {$video_width}px, Height: {$video_height}px, Mobile Height: {$mobile_height}px -->";
+echo "<!-- Debug: Width: {$video_width}px, Height: {$video_height}px, Mobile Width: {$mobile_width}px, Mobile Height: {$mobile_height}px -->";
 ?>
 
 <div class="youtube-video-block md:w-1/2">
@@ -62,6 +65,7 @@ echo "<!-- Debug: Width: {$video_width}px, Height: {$video_height}px, Mobile Hei
             data-embed-url="<?php echo esc_attr($embed_url); ?>"
             data-width="<?php echo esc_attr($video_width); ?>"
             data-height="<?php echo esc_attr($video_height); ?>"
+            data-mobile-width="<?php echo esc_attr($mobile_width); ?>"
             data-mobile-height="<?php echo esc_attr($mobile_height); ?>"
         >
             <!-- Play button overlay -->
@@ -85,12 +89,20 @@ echo "<!-- Debug: Width: {$video_width}px, Height: {$video_height}px, Mobile Hei
 
 <?php echo $mobile_styles; ?>
 
-/* Ensure minimum width on mobile */
+/* Ensure minimum width on mobile and responsive behavior */
 @media (max-width: 1023px) {
     #<?php echo esc_attr($block_id); ?> {
         min-width: 280px !important;
-        width: 100% !important;
+        width: <?php echo esc_attr($mobile_width); ?>px !important;
         max-width: 100% !important;
+        height: <?php echo esc_attr($mobile_height); ?>px !important;
+    }
+    
+    /* Para telas muito pequenas, sempre use 100% da largura */
+    @media (max-width: <?php echo esc_attr($mobile_width + 40); ?>px) {
+        #<?php echo esc_attr($block_id); ?> {
+            width: 100% !important;
+        }
     }
 }
 

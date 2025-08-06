@@ -1,18 +1,17 @@
-# Bloco ACF: YouTube Video
+# Bloco ACF: Vídeo do YouTube
 
 ## 📝 Descrição
-Bloco para incorporação de vídeos do YouTube com thumbnail personalizada que carrega o vídeo apenas quando clicado, otimizando performance da página.
+Bloco para incorporação de vídeos do YouTube com preview personalizado, lazy loading e configurações responsivas avançadas. Ideal para landing pages e seções de conteúdo educativo.
 
 ## 🔧 Recursos
-- ✅ URL do YouTube configurável (watch, embed ou youtu.be)
-- ✅ Thumbnail personalizada
-- ✅ Dimensões customizáveis (desktop e mobile)
-- ✅ Carregamento lazy (só carrega quando clicado)
-- ✅ Botão play personalizado
-- ✅ Design responsivo
-- ✅ Acessibilidade com teclado
-- ✅ Autoplay quando ativado
-- ✅ Suporte a YouTube no-cookie
+- ✅ Preview personalizado com thumbnail
+- ✅ Lazy loading automático
+- ✅ Player customizado com controles
+- ✅ Configurações responsivas (desktop e mobile)
+- ✅ Dimensões personalizáveis
+- ✅ Autoplay opcional
+- ✅ Texto alternativo configurável
+- ✅ Integração automática com API do YouTube
 
 ## 📂 Estrutura de Arquivos
 ```
@@ -25,102 +24,71 @@ youtube-video/
 
 ## ⚙️ Campos Editáveis no Backend
 
-### 🎬 Conteúdo
-- **URL do YouTube:** URL completa do vídeo (watch, embed ou youtu.be)
-  - Exemplo: `https://www.youtube.com/watch?v=1MotoMgiWVU`
-  - Padrão: `https://www.youtube.com/watch?v=1MotoMgiWVU`
+### 🎬 Vídeo
+- **ID do Vídeo:** ID único do vídeo no YouTube (ex: dQw4w9WgXcQ)
+- **Texto Alternativo:** Descrição para acessibilidade (padrão: "Vídeo do YouTube")
 
-### 🖼️ Aparência
-- **Imagem Thumbnail:** Imagem de preview personalizada
-  - Formato: Array ACF com URL, alt, etc.
-  - Padrão: `/wp-content/uploads/2025/07/thumb-video.webp`
+### 📐 Dimensões Desktop
+- **Largura:** Largura do player em pixels (padrão: 640px)
+- **Altura:** Altura do player em pixels (padrão: 360px)
 
-### 📐 Dimensões
-- **Largura (Desktop):** Largura em pixels para desktop
-  - Padrão: 560px
-  - Mínimo: 300px, Máximo: 1920px
-- **Altura (Desktop):** Altura em pixels para desktop
-  - Padrão: 315px
-  - Mínimo: 200px, Máximo: 1080px
-- **Altura (Mobile):** Altura em pixels para mobile
-  - Padrão: 200px
-  - Mínimo: 150px, Máximo: 500px
+### 📱 Dimensões Mobile
+- **Largura Mobile:** Largura específica para dispositivos móveis
+- **Altura Mobile:** Altura específica para dispositivos móveis
 
-## 🎨 Design e Layout
-- **Container:** Responsivo com largura máxima configurável
-- **Aspecto:** Mantém proporções configuradas
-- **Bordas:** Arredondadas (border-radius: 24px)
-- **Foco:** Borda azul para acessibilidade
-- **Transições:** Suaves (300ms) para interações
+### ⚙️ Configurações
+- **Autoplay:** Reprodução automática quando carregado
+- **Controles:** Exibir controles do player (padrão: sim)
+- **Info do Vídeo:** Mostrar informações do vídeo (padrão: não)
+
+## 🎨 Características Visuais
+- **Container responsivo:** Ajusta automaticamente às dimensões da tela
+- **Thumbnail de preview:** Carregada automaticamente do YouTube
+- **Botão de play:** Overlay customizado para iniciar reprodução
+- **Transições suaves:** Efeitos de hover e carregamento
 
 ## 📱 Responsividade
-- **Desktop:** Dimensões configuradas no backend
-- **Mobile:** Altura específica, largura 100%
-- **Mínimo:** 280px de largura em mobile
-- **Máximo:** Não excede largura configurada
+- **Desktop:** Utiliza dimensões configuradas nos campos desktop
+- **Mobile (< 768px):** Utiliza dimensões mobile ou fallback responsivo
+- **Aspect ratio:** Mantém proporção 16:9 quando não especificado
+- **Container flexível:** Adapta-se ao container pai
 
-## 🎯 Funcionalidades
-
-### ▶️ Player Interativo
-- **Thumbnail:** Exibida antes do clique
-- **Botão Play:** SVG customizado com sombra
-- **Ativação:** Click ou teclas Enter/Espaço
-- **Autoplay:** Ativado automaticamente após clique
-
-### 🔧 Processamento Inteligente
-- **Extração de ID:** Automática de URLs diferentes do YouTube
-- **Conversão:** URLs watch/youtu.be convertidas para embed
-- **No-cookie:** Usa youtube-nocookie.com para privacidade
-- **Fallback:** URLs embed diretas também funcionam
-
-### 🚀 Performance
-- **Lazy Loading:** Vídeo só carrega quando solicitado
-- **Script Único:** JavaScript específico por bloco
-- **CSS Dinâmico:** Estilos baseados nas configurações
-- **Otimização:** Menor impacto na velocidade da página
+## 🔗 Funcionalidades Técnicas
+- **Lazy Loading:** Vídeo carrega apenas quando necessário
+- **API Integration:** Busca automática de metadados do YouTube
+- **SEO Friendly:** Markup estruturado para melhor indexação
+- **Performance:** Otimizado para carregamento rápido
 
 ## 📋 Como Usar
 1. **No Editor:**
-   - Adicione o bloco "YouTube Video" da categoria "BrightMinds"
-   - Cole a URL do YouTube
-   - Faça upload da thumbnail personalizada
-   - Configure as dimensões desejadas
-   - Visualize o preview no editor
+   - Adicione o bloco "Vídeo do YouTube" da categoria "BrightMinds"
+   - Cole o ID do vídeo (parte após "v=" na URL do YouTube)
+   - Configure dimensões para desktop e mobile
+   - Ajuste configurações de autoplay e controles
 
 2. **No Frontend:**
-   - Thumbnail é exibida com botão play
-   - Clique ou Enter/Espaço para reproduzir
-   - Vídeo carrega automaticamente com autoplay
+   - Preview com thumbnail é exibido inicialmente
+   - Clique no botão play para carregar o player
+   - Player responsivo se adapta à tela
+   - Controles nativos do YouTube disponíveis
 
-## 🔗 Integrações
-- **YouTube API:** Compatível com player embed
-- **URLs Suportadas:**
-  - `https://www.youtube.com/watch?v=ID`
-  - `https://youtu.be/ID`
-  - `https://www.youtube.com/embed/ID`
-- **No-cookie:** Automaticamente convertido para privacidade
+## 🚀 Funcionalidades Avançadas
+- **IDs únicos:** Cada instância tem identificador único
+- **CSS dinâmico:** Estilos aplicados baseados nas configurações
+- **Error handling:** Tratamento de vídeos inválidos ou indisponíveis
+- **Debug mode:** Comentários no código para desenvolvimento
+- **Mobile-first:** Prioriza experiência mobile
 
-## 🎨 Customizações CSS
-```css
-/* Estilos aplicados dinamicamente */
-#youtube-embed-{ID} {
-    width: {configurado}px !important;
-    height: {configurado}px !important;
-}
+## ⚠️ Observações
+- O ID do vídeo deve ser válido e o vídeo deve estar público no YouTube
+- Dimensões mobile sobrescrevem as desktop em telas pequenas
+- Autoplay pode não funcionar em todos os navegadores (política do browser)
+- Thumbnail é carregada automaticamente do YouTube
+- Player completo só carrega após interação do usuário (performance)
 
-/* Responsivo automático */
-@media (max-width: 1023px) {
-    #youtube-embed-{ID} {
-        height: {mobile}px !important;
-        width: 100% !important;
-    }
-}
-```
-
-## ⚠️ Observações Importantes
-- **IDs únicos:** Cada bloco tem ID específico para CSS isolado
-- **Script inline:** JavaScript específico por instância
-- **Especificidade:** CSS com `!important` para sobrepor Tailwind
-- **Debug:** Comentário HTML temporário para verificar valores
-- **Acessibilidade:** Suporte completo a navegação por teclado
-- **Privacy:** Usa youtube-nocookie.com por padrão
+## 🔧 Configuração Técnica
+- **YouTube API:** Utiliza API v3 para metadados
+- **Iframe API:** Player incorporado com controles avançados
+- **CSS Grid/Flexbox:** Layout responsivo moderno
+- **JavaScript:** Lazy loading e controle de player
+- **Performance:** Otimizado para Core Web Vitals
