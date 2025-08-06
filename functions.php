@@ -4,6 +4,13 @@ if (is_file(__DIR__.'/vendor/autoload_packages.php')) {
     require_once __DIR__.'/vendor/autoload_packages.php';
 }
 
+/**
+ * Verificar se estamos em ambiente de desenvolvimento
+ */
+function brightminds_is_development() {
+    return defined('WP_DEBUG') && WP_DEBUG === true;
+}
+
 function tailpress(): TailPress\Framework\Theme
 {
     return TailPress\Framework\Theme::instance()
@@ -42,17 +49,48 @@ function brightminds_get_compiled_asset($asset_path) {
     
     // Verificar se o manifest existe
     if (!file_exists($manifest_path)) {
+        if (brightminds_is_development()) {
+            error_log('Vite manifest not found: ' . $manifest_path);
+        }
         return false;
     }
     
-    $manifest = json_decode(file_get_contents($manifest_path), true);
+    $manifest_content = file_get_contents($manifest_path);
+    if ($manifest_content === false) {
+        if (brightminds_is_development()) {
+            error_log('Could not read Vite manifest: ' . $manifest_path);
+        }
+        return false;
+    }
+    
+    $manifest = json_decode($manifest_content, true);
+    if ($manifest === null) {
+        if (brightminds_is_development()) {
+            error_log('Invalid JSON in Vite manifest: ' . $manifest_path);
+        }
+        return false;
+    }
     
     // Verificar se o asset existe no manifest
     if (!isset($manifest[$asset_path])) {
+        if (brightminds_is_development()) {
+            error_log('Asset not found in manifest: ' . $asset_path);
+        }
         return false;
     }
     
-    return get_template_directory_uri() . '/dist/' . $manifest[$asset_path]['file'];
+    $asset_file = $manifest[$asset_path]['file'];
+    $full_path = get_template_directory() . '/dist/' . $asset_file;
+    
+    // Verificar se o arquivo físico existe
+    if (!file_exists($full_path)) {
+        if (brightminds_is_development()) {
+            error_log('Compiled asset file not found: ' . $full_path);
+        }
+        return false;
+    }
+    
+    return get_template_directory_uri() . '/dist/' . $asset_file;
 }
 
 function brightminds_enqueue_styles() {
@@ -72,6 +110,14 @@ function brightminds_enqueue_styles() {
             [],
             null
         );
+    } else {
+        // Fallback: carregar o arquivo CSS original se o compilado não estiver disponível
+        wp_enqueue_style(
+            'theme-fallback',
+            get_template_directory_uri() . '/resources/css/app.css',
+            [],
+            filemtime(get_template_directory() . '/resources/css/app.css')
+        );
     }
 
     // Carregar estilos dos blocos ACF
@@ -90,10 +136,33 @@ add_action('wp_enqueue_scripts', 'brightminds_enqueue_styles');
 function brightminds_add_editor_styles() {
     $editor_css = brightminds_get_compiled_asset('resources/css/editor-style.css');
     if ($editor_css) {
-        add_editor_style(str_replace(get_template_directory_uri(), '', $editor_css));
+        // Converter URL completa para caminho relativo ao tema
+        $relative_path = str_replace(get_template_directory_uri() . '/', '', $editor_css);
+        add_editor_style($relative_path);
+    } else {
+        // Fallback: tentar carregar diretamente se o manifest não estiver disponível
+        if (brightminds_is_development()) {
+            error_log('Editor style not found in manifest, trying fallback');
+        }
     }
 }
 add_action('admin_init', 'brightminds_add_editor_styles');
+
+/**
+ * Enqueue editor styles for Gutenberg
+ */
+function brightminds_enqueue_block_editor_assets() {
+    $editor_css = brightminds_get_compiled_asset('resources/css/editor-style.css');
+    if ($editor_css) {
+        wp_enqueue_style(
+            'brightminds-editor-style',
+            $editor_css,
+            [],
+            null
+        );
+    }
+}
+add_action('enqueue_block_editor_assets', 'brightminds_enqueue_block_editor_assets');
 
 
 function mytheme_enqueue_custom_script() {
@@ -107,23 +176,40 @@ function mytheme_enqueue_custom_script() {
             null,
             true
         );
+    } else {
+        // Fallback: carregar o arquivo JS original se o compilado não estiver disponível
+        wp_enqueue_script(
+            'theme-app-fallback', 
+            get_template_directory_uri() . '/resources/js/app.js',
+            [],
+            filemtime(get_template_directory() . '/resources/js/app.js'),
+            true
+        );
     }
 
-    wp_enqueue_script(
-        'custom-faq', // Handle name
-        get_template_directory_uri() . '/js/faq.js', // Path to your JS file
-        array('jquery'), // Dependencies
-        null, // Version
-        true // Load in footer
-    );
+    // Verificar se o arquivo faq.js existe antes de tentar carregá-lo
+    $faq_js_path = get_template_directory() . '/js/faq.js';
+    if (file_exists($faq_js_path)) {
+        wp_enqueue_script(
+            'custom-faq',
+            get_template_directory_uri() . '/js/faq.js',
+            array('jquery'),
+            filemtime($faq_js_path),
+            true
+        );
+    }
 
-    wp_enqueue_script(
-        'custom-form', // Novo handle para o form.js
-        get_template_directory_uri() . '/js/form.js', // Caminho do novo arquivo
-        array('jquery'), // Dependencies
-        null, // Version
-        true // Load in footer
-    );
+    // Verificar se o arquivo form.js existe antes de tentar carregá-lo
+    $form_js_path = get_template_directory() . '/js/form.js';
+    if (file_exists($form_js_path)) {
+        wp_enqueue_script(
+            'custom-form',
+            get_template_directory_uri() . '/js/form.js',
+            array('jquery'),
+            filemtime($form_js_path),
+            true
+        );
+    }
 }
 add_action('wp_enqueue_scripts', 'mytheme_enqueue_custom_script');
 
@@ -158,6 +244,8 @@ if (function_exists('tailpress')) {
         tailpress();
     } catch (Exception $e) {
         // Se houver erro no TailPress, usar fallback manual
-        error_log('TailPress error: ' . $e->getMessage());
+        if (brightminds_is_development()) {
+            error_log('TailPress error: ' . $e->getMessage());
+        }
     }
 }

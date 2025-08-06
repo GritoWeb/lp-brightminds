@@ -28,36 +28,3 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-//Form WPP
-document.addEventListener('DOMContentLoaded', () => {
-  // Verificar se os elementos do formulário WhatsApp existem
-  const openButton = document.getElementById('openWhatsappForm');
-  const closeButton = document.getElementById('closeWhatsappForm');
-  const form = document.getElementById('whatsappForm');
-  const consentCheckbox = document.getElementById('consent');
-  const submitBtn = document.getElementById('submitBtn');
-
-  // Só executar se todos os elementos necessários existirem
-  if (openButton && closeButton && form && consentCheckbox && submitBtn) {
-    openButton.addEventListener('click', () => {
-      form.classList.remove('hidden');
-    });
-
-    closeButton.addEventListener('click', () => {
-      form.classList.add('hidden');
-    });
-
-    consentCheckbox.addEventListener('change', () => {
-      if (consentCheckbox.checked) {
-        submitBtn.disabled = false;
-        submitBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
-        submitBtn.classList.add('bg-green-600', 'hover:bg-green-700', 'cursor-pointer');
-      } else {
-        submitBtn.disabled = true;
-        submitBtn.classList.remove('bg-green-600', 'hover:bg-green-700', 'cursor-pointer');
-        submitBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
-      }
-    });
-  }
-});
-
