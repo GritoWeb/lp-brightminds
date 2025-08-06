@@ -13,7 +13,7 @@ function tailpress(): TailPress\Framework\Theme
                 ->registerAsset('resources/js/app.js')
                 ->editorStyleFile('resources/css/editor-style.css')
             )
-            ->enqueueAssets()
+            // Não chamar enqueueAssets() aqui para evitar duplicação
         )
         ->features(fn($manager) => $manager->add(TailPress\Framework\Features\MenuOptions::class))
         ->menus(fn($manager) => $manager->add('primary', __( 'Primary Menu', 'tailpress')))
@@ -34,6 +34,27 @@ function tailpress(): TailPress\Framework\Theme
         ]));
 }
 
+/**
+ * Função para obter assets compilados do manifest do Vite
+ */
+function brightminds_get_compiled_asset($asset_path) {
+    $manifest_path = get_template_directory() . '/dist/.vite/manifest.json';
+    
+    // Verificar se o manifest existe
+    if (!file_exists($manifest_path)) {
+        return false;
+    }
+    
+    $manifest = json_decode(file_get_contents($manifest_path), true);
+    
+    // Verificar se o asset existe no manifest
+    if (!isset($manifest[$asset_path])) {
+        return false;
+    }
+    
+    return get_template_directory_uri() . '/dist/' . $manifest[$asset_path]['file'];
+}
+
 function brightminds_enqueue_styles() {
     wp_enqueue_style(
         'google-fonts',
@@ -42,12 +63,16 @@ function brightminds_enqueue_styles() {
         false
     );
 
-    wp_enqueue_style(
-        'theme',
-        get_template_directory_uri() . '/dist/css/app.css',
-        [],
-        null
-    );
+    // Carregar app.css compilado pelo Vite
+    $app_css = brightminds_get_compiled_asset('resources/css/app.css');
+    if ($app_css) {
+        wp_enqueue_style(
+            'theme',
+            $app_css,
+            [],
+            null
+        );
+    }
 
     // Carregar estilos dos blocos ACF
     wp_enqueue_style(
@@ -59,8 +84,31 @@ function brightminds_enqueue_styles() {
 }
 add_action('wp_enqueue_scripts', 'brightminds_enqueue_styles');
 
+/**
+ * Adicionar estilos do editor
+ */
+function brightminds_add_editor_styles() {
+    $editor_css = brightminds_get_compiled_asset('resources/css/editor-style.css');
+    if ($editor_css) {
+        add_editor_style(str_replace(get_template_directory_uri(), '', $editor_css));
+    }
+}
+add_action('admin_init', 'brightminds_add_editor_styles');
+
 
 function mytheme_enqueue_custom_script() {
+    // Carregar app.js compilado pelo Vite
+    $app_js = brightminds_get_compiled_asset('resources/js/app.js');
+    if ($app_js) {
+        wp_enqueue_script(
+            'theme-app', 
+            $app_js,
+            [],
+            null,
+            true
+        );
+    }
+
     wp_enqueue_script(
         'custom-faq', // Handle name
         get_template_directory_uri() . '/js/faq.js', // Path to your JS file
@@ -104,4 +152,12 @@ function register_acf_blocks() {
 }
 add_action('acf/init', 'register_acf_blocks');
 
-tailpress();
+// Inicializar TailPress com verificação de segurança
+if (function_exists('tailpress')) {
+    try {
+        tailpress();
+    } catch (Exception $e) {
+        // Se houver erro no TailPress, usar fallback manual
+        error_log('TailPress error: ' . $e->getMessage());
+    }
+}
