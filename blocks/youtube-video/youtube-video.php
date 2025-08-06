@@ -32,95 +32,106 @@ if (is_array($thumbnail_image)) {
 } else {
     $thumbnail_url = $thumbnail_image;
 }
-
-// Criar estilos dinâmicos baseados nas dimensões configuradas
-$container_styles = sprintf(
-    'width: %spx !important; height: %spx !important;',
-    esc_attr($video_width),
-    esc_attr($video_height)
-);
-
-$mobile_styles = sprintf(
-    '@media (max-width: 1023px) { body .youtube-video-block #%s { height: %spx !important; width: %spx !important; max-width: 100%% !important; min-width: 280px !important; } }',
-    esc_attr($block_id),
-    esc_attr($mobile_height),
-    esc_attr($mobile_width)
-);
-
-$small_mobile_styles = sprintf(
-    '@media (max-width: %spx) { body .youtube-video-block #%s { width: 100%% !important; } }',
-    esc_attr($mobile_width + 40),
-    esc_attr($block_id)
-);
-
-// Debug - remover após testar
-echo "<!-- Debug: ";
-echo "Width: {$video_width}px, ";
-echo "Height: {$video_height}px, ";
-echo "Mobile Width: {$mobile_width}px, ";
-echo "Mobile Height: {$mobile_height}px, ";
-echo "Block ID: {$block_id} ";
-echo "-->";
 ?>
 
 <div class="youtube-video-block">
-    <div>
-        <!-- YouTube placeholder -->
-        <div
-            id="<?php echo esc_attr($block_id); ?>"
-            class="relative flex items-center justify-center cursor-pointer rounded-3xl border-2 border-transparent transition-all duration-300 focus:outline-none focus:border-blue-500 focus:shadow-lg"
-            style="<?php echo esc_attr($container_styles); ?>background-image: url('<?php echo esc_url($thumbnail_url); ?>'); background-size: cover; background-position: center;"
-            aria-label="Play video"
-            role="button"
-            tabindex="0"
-            data-embed-url="<?php echo esc_attr($embed_url); ?>"
-            data-width="<?php echo esc_attr($video_width); ?>"
-            data-height="<?php echo esc_attr($video_height); ?>"
-            data-mobile-width="<?php echo esc_attr($mobile_width); ?>"
-            data-mobile-height="<?php echo esc_attr($mobile_height); ?>"
-        >
-            <!-- Play button overlay -->
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 opacity-90">
-                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="40" cy="40" r="40" fill="rgba(255, 255, 255, 0.9)"/>
-                    <path d="M32 24L56 40L32 56V24Z" fill="#ff0000"/>
+    <!-- YouTube placeholder -->
+    <div
+        id="<?php echo esc_attr($block_id); ?>"
+        class="youtube-video-container relative cursor-pointer rounded-3xl border-2 border-transparent transition-all duration-300 focus:outline-none focus:border-blue-500 focus:shadow-lg"
+        style="background-image: url('<?php echo esc_url($thumbnail_url); ?>'); background-size: cover; background-position: center;"
+        aria-label="Play video"
+        role="button"
+        tabindex="0"
+        data-embed-url="<?php echo esc_attr($embed_url); ?>"
+        data-width="<?php echo esc_attr($video_width); ?>"
+        data-height="<?php echo esc_attr($video_height); ?>"
+        data-mobile-width="<?php echo esc_attr($mobile_width); ?>"
+        data-mobile-height="<?php echo esc_attr($mobile_height); ?>"
+    >
+        <!-- Play button overlay -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 opacity-90 play-button-overlay">
+            <div class="youtube-play-button">
+                <!-- YouTube Logo Background -->
+                <svg width="68" height="48" viewBox="0 0 68 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- YouTube Red Background -->
+                    <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#FF0000"/>
+                    <!-- Play Triangle -->
+                    <path d="M 45,24 27,14 27,34" fill="white"/>
                 </svg>
             </div>
         </div>
     </div>
 </div>
 
-<!-- CSS para responsividade com dimensões dinâmicas -->
+<!-- CSS Responsivo -->
 <style>
-/* Estilos base para este bloco com alta especificidade */
-body .youtube-video-block #<?php echo esc_attr($block_id); ?> {
-    width: <?php echo esc_attr($video_width); ?>px !important;
-    height: <?php echo esc_attr($video_height); ?>px !important;
-    display: block !important;
-    box-sizing: border-box !important;
+/* Desktop dimensions */
+#<?php echo esc_attr($block_id); ?> {
+    width: <?php echo esc_attr($video_width); ?>px;
+    height: <?php echo esc_attr($video_height); ?>px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Media queries dinâmicas com máxima especificidade */
-<?php echo $mobile_styles; ?>
-<?php echo $small_mobile_styles; ?>
-
-/* Desktop - Garante dimensões em telas grandes */
-@media (min-width: 1024px) {
-    body .youtube-video-block #<?php echo esc_attr($block_id); ?> {
-        max-width: <?php echo esc_attr($video_width); ?>px !important;
-        width: <?php echo esc_attr($video_width); ?>px !important;
-        height: <?php echo esc_attr($video_height); ?>px !important;
-    }
-}
-
-/* Debug: Forçar cor de fundo temporária para verificar se CSS está sendo aplicado */
-body .youtube-video-block #<?php echo esc_attr($block_id); ?> {
-    outline: 2px solid red !important;
-}
+/* Mobile dimensions */
 @media (max-width: 1023px) {
-    body .youtube-video-block #<?php echo esc_attr($block_id); ?> {
-        outline: 2px solid blue !important;
+    #<?php echo esc_attr($block_id); ?> {
+        width: <?php echo esc_attr($mobile_width); ?>px;
+        height: <?php echo esc_attr($mobile_height); ?>px;
+        max-width: calc(100vw - 40px);
     }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: <?php echo esc_attr($mobile_width + 40); ?>px) {
+    #<?php echo esc_attr($block_id); ?> {
+        width: calc(100vw - 40px);
+        min-width: 280px;
+    }
+}
+
+/* Garantir centralização */
+.youtube-video-block {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
+/* Assegurar que o iframe preencha o container quando ativo */
+#<?php echo esc_attr($block_id); ?> iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 24px;
+}
+
+/* YouTube Play Button Styling */
+.youtube-play-button {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+}
+
+.youtube-play-button:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.4));
+}
+
+.youtube-play-button svg {
+    transition: all 0.3s ease;
+}
+
+/* Efeito hover no container */
+#<?php echo esc_attr($block_id); ?>:hover .youtube-play-button {
+    transform: scale(1.05);
+}
+
+#<?php echo esc_attr($block_id); ?>:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 </style>
 
@@ -131,16 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function playVideo() {
         const embedUrl = placeholder.getAttribute('data-embed-url');
-        const width = placeholder.getAttribute('data-width');
-        const height = placeholder.getAttribute('data-height');
-        const mobileHeight = placeholder.getAttribute('data-mobile-height');
 
         // Esconder a imagem de fundo e o overlay
         placeholder.style.backgroundImage = 'none';
         placeholder.style.backgroundColor = '#000';
         
         // Remover o overlay do botão play
-        const playButton = placeholder.querySelector('div');
+        const playButton = placeholder.querySelector('.play-button-overlay');
         if (playButton) {
             playButton.remove();
         }
@@ -151,21 +159,15 @@ document.addEventListener('DOMContentLoaded', function() {
         iframe.setAttribute('frameborder', '0');
         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
         iframe.setAttribute('allowfullscreen', 'true');
-        iframe.classList.add('rounded-3xl');
-
-        // Definir dimensões do iframe para preencher o container
         iframe.style.width = '100%';
         iframe.style.height = '100%';
-        iframe.style.position = 'absolute';
-        iframe.style.top = '0';
-        iframe.style.left = '0';
+        iframe.style.borderRadius = '24px';
 
-        // Tornar o container posição relativa
-        placeholder.style.position = 'relative';
-        placeholder.style.cursor = 'default';
-        
-        // Inserir o iframe dentro do container
+        // Inserir o iframe
         placeholder.appendChild(iframe);
+        
+        // Remover cursor pointer
+        placeholder.style.cursor = 'default';
     }
 
     // Click event

@@ -12,10 +12,24 @@
    Estilos para o bloco ACF - YouTube Video
    ===================================================== */
 
+/* Container principal - centralização */
+.youtube-video-block {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 /* YouTube Video Block - Estilos aplicados dinamicamente via PHP */
+
+/* YouTube Play Button Global Styles */
+.youtube-play-button {
+    display: inline-block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
 
 .play-button-overlay svg {
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: all 0.3s ease;
 }
 
 /* Preview no editor - YouTube */
@@ -30,25 +44,4 @@
 /* Preview no editor - Professores */
 .acf-block-preview .professors-block {
     pointer-events: none;
-}
-
-/* =====================================================
-   Estilos para o bloco ACF - Formulário de Cadastro  
-   ===================================================== */
-
-.cadastro-form-block {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-/* Preview no editor - Formulário */
-.acf-block-preview .cadastro-form-block {
-    pointer-events: none;
-}
-
-/* Ensure form is responsive */
-.cadastro-form-block form {
-    width: 100%;
-    max-width: 400px;
 }

@@ -41,11 +41,12 @@ youtube-video/
 - **Controles:** Exibir controles do player (padrão: sim)
 - **Info do Vídeo:** Mostrar informações do vídeo (padrão: não)
 
-## 🎨 Características Visuais
-- **Container responsivo:** Ajusta automaticamente às dimensões da tela
-- **Thumbnail de preview:** Carregada automaticamente do YouTube
-- **Botão de play:** Overlay customizado para iniciar reprodução
-- **Transições suaves:** Efeitos de hover e carregamento
+## 🎨 Estilos Padrão
+- **Bordas:** Arredondadas (24px border-radius)
+- **Botão Play:** Ícone oficial do YouTube com efeitos hover
+- **Sombra:** Drop-shadow suave no ícone
+- **Transições:** 300ms para efeitos suaves
+- **Hover:** Escala e elevação do container
 
 ## 📱 Responsividade
 - **Desktop:** Utiliza dimensões configuradas nos campos desktop
@@ -76,7 +77,6 @@ youtube-video/
 - **IDs únicos:** Cada instância tem identificador único
 - **CSS dinâmico:** Estilos aplicados baseados nas configurações
 - **Error handling:** Tratamento de vídeos inválidos ou indisponíveis
-- **Debug mode:** Comentários no código para desenvolvimento
 - **Mobile-first:** Prioriza experiência mobile
 
 ## ⚠️ Observações

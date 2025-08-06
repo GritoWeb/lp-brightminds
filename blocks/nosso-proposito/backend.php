@@ -86,7 +86,7 @@ if (empty(get_field('titulo')) && is_admin()) {
             };
             
             // Salvar dados (conectar com ACF)
-            console.log('Dados para salvar:', data);
+            // Dados salvos automaticamente pelo ACF
             
             // Fechar modal
             closePropositoModal();
