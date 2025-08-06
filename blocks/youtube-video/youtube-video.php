@@ -41,23 +41,34 @@ $container_styles = sprintf(
 );
 
 $mobile_styles = sprintf(
-    '@media (max-width: 1023px) { #%s { height: %spx !important; width: %spx !important; max-width: %spx !important; } }',
+    '@media (max-width: 1023px) { body .youtube-video-block #%s { height: %spx !important; width: %spx !important; max-width: 100%% !important; min-width: 280px !important; } }',
     esc_attr($block_id),
     esc_attr($mobile_height),
-    esc_attr($mobile_width),
     esc_attr($mobile_width)
 );
 
+$small_mobile_styles = sprintf(
+    '@media (max-width: %spx) { body .youtube-video-block #%s { width: 100%% !important; } }',
+    esc_attr($mobile_width + 40),
+    esc_attr($block_id)
+);
+
 // Debug - remover após testar
-echo "<!-- Debug: Width: {$video_width}px, Height: {$video_height}px, Mobile Width: {$mobile_width}px, Mobile Height: {$mobile_height}px -->";
+echo "<!-- Debug: ";
+echo "Width: {$video_width}px, ";
+echo "Height: {$video_height}px, ";
+echo "Mobile Width: {$mobile_width}px, ";
+echo "Mobile Height: {$mobile_height}px, ";
+echo "Block ID: {$block_id} ";
+echo "-->";
 ?>
 
-<div class="youtube-video-block md:w-1/2">
+<div class="youtube-video-block">
     <div>
         <!-- YouTube placeholder -->
         <div
             id="<?php echo esc_attr($block_id); ?>"
-            class="relative min-w-[340px] flex items-center justify-center cursor-pointer rounded-3xl border-2 border-transparent transition-all duration-300 focus:outline-none focus:border-blue-500 focus:shadow-lg"
+            class="relative flex items-center justify-center cursor-pointer rounded-3xl border-2 border-transparent transition-all duration-300 focus:outline-none focus:border-blue-500 focus:shadow-lg"
             style="<?php echo esc_attr($container_styles); ?>background-image: url('<?php echo esc_url($thumbnail_url); ?>'); background-size: cover; background-position: center;"
             aria-label="Play video"
             role="button"
@@ -81,44 +92,35 @@ echo "<!-- Debug: Width: {$video_width}px, Height: {$video_height}px, Mobile Wid
 
 <!-- CSS para responsividade com dimensões dinâmicas -->
 <style>
-/* Estilos específicos para este bloco */
-#<?php echo esc_attr($block_id); ?> {
+/* Estilos base para este bloco com alta especificidade */
+body .youtube-video-block #<?php echo esc_attr($block_id); ?> {
     width: <?php echo esc_attr($video_width); ?>px !important;
     height: <?php echo esc_attr($video_height); ?>px !important;
+    display: block !important;
+    box-sizing: border-box !important;
 }
 
+/* Media queries dinâmicas com máxima especificidade */
 <?php echo $mobile_styles; ?>
+<?php echo $small_mobile_styles; ?>
 
-/* Ensure minimum width on mobile and responsive behavior */
-@media (max-width: 1023px) {
-    #<?php echo esc_attr($block_id); ?> {
-        min-width: 280px !important;
-        width: <?php echo esc_attr($mobile_width); ?>px !important;
-        max-width: 100% !important;
-        height: <?php echo esc_attr($mobile_height); ?>px !important;
-    }
-    
-    /* Para telas muito pequenas, sempre use 100% da largura */
-    @media (max-width: <?php echo esc_attr($mobile_width + 40); ?>px) {
-        #<?php echo esc_attr($block_id); ?> {
-            width: 100% !important;
-        }
-    }
-}
-
-/* Ensure the video doesn't exceed container on very large screens */
+/* Desktop - Garante dimensões em telas grandes */
 @media (min-width: 1024px) {
-    #<?php echo esc_attr($block_id); ?> {
+    body .youtube-video-block #<?php echo esc_attr($block_id); ?> {
         max-width: <?php echo esc_attr($video_width); ?>px !important;
         width: <?php echo esc_attr($video_width); ?>px !important;
         height: <?php echo esc_attr($video_height); ?>px !important;
     }
 }
 
-/* Override any potential Tailwind classes */
-.youtube-video-block #<?php echo esc_attr($block_id); ?> {
-    width: <?php echo esc_attr($video_width); ?>px !important;
-    height: <?php echo esc_attr($video_height); ?>px !important;
+/* Debug: Forçar cor de fundo temporária para verificar se CSS está sendo aplicado */
+body .youtube-video-block #<?php echo esc_attr($block_id); ?> {
+    outline: 2px solid red !important;
+}
+@media (max-width: 1023px) {
+    body .youtube-video-block #<?php echo esc_attr($block_id); ?> {
+        outline: 2px solid blue !important;
+    }
 }
 </style>
 

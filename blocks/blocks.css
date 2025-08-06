@@ -12,10 +12,7 @@
    Estilos para o bloco ACF - YouTube Video
    ===================================================== */
 
-.youtube-video-block {
-    display: flex;
-    justify-content: center;
-}
+/* YouTube Video Block - Estilos aplicados dinamicamente via PHP */
 
 .play-button-overlay svg {
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
