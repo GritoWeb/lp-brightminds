@@ -22,7 +22,7 @@
     <div>
       <h4 class="font-medium uppercase">Bright Minds.</h4>
       <h4 class="font-medium uppercase">A escola do futuro.</h4>
-      <p>Email: suporte@escolabrightminds.com.br</p>
+      <a href="mailto:suporte@escolabrightminds.com.br" class="email-footer">Email: suporte@escolabrightminds.com.br</a>
     </div>
   </div>
 
