@@ -37,11 +37,8 @@ $alignment_classes = array(
 );
 $alignment_class = $alignment_classes[$button_alignment] ?? 'text-center';
 
-// Classes de borda
+// Classes de borda - sempre transparente inicialmente para manter layout
 $border_classes = '';
-if ($enable_border) {
-    $border_classes = 'border-2 border-black';
-}
 
 // Definir estilos inline para o botão
 $button_styles = sprintf(
@@ -73,8 +70,18 @@ $block_id = 'primary-button-' . $block['id'];
 </div>
 
 <style>
+#<?php echo esc_attr($block_id); ?> .primary-button {
+    border: 2px solid transparent;
+    <?php if ($enable_border): ?>
+    transition: all 0.3s ease;
+    <?php endif; ?>
+}
+
 #<?php echo esc_attr($block_id); ?> .primary-button:hover {
     background-color: var(--hover-bg-color) !important;
     color: var(--hover-text-color) !important;
+    <?php if ($enable_border): ?>
+    border: 2px solid #000000 !important;
+    <?php endif; ?>
 }
 </style>
