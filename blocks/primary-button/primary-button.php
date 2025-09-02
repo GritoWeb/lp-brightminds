@@ -21,6 +21,7 @@ if ($background_color === '#ffda00') {
 
 $text_color = '#000000'; // Texto sempre preto
 $button_alignment = get_field('button_alignment') ?: 'center';
+$enable_border = get_field('enable_border'); // Nova opção de borda preta
 
 // Configurações fixas
 $font_weight = '700'; // Sempre 700
@@ -35,6 +36,12 @@ $alignment_classes = array(
     'right' => 'text-right'
 );
 $alignment_class = $alignment_classes[$button_alignment] ?? 'text-center';
+
+// Classes de borda
+$border_classes = '';
+if ($enable_border) {
+    $border_classes = 'border-2 border-black';
+}
 
 // Definir estilos inline para o botão
 $button_styles = sprintf(
@@ -57,7 +64,7 @@ $block_id = 'primary-button-' . $block['id'];
     <div class="lg:pt-12 py-8 lg:py-0 <?php echo esc_attr($alignment_class); ?>">
         <a 
             href="<?php echo esc_url($button_url); ?>" 
-            class="open-modal !text-[1.58rem] text-center !py-1 !max-w-[440px] inline-block primary-button rounded-3xl duration-300"
+            class="open-modal !text-[1.58rem] text-center !py-1 !max-w-[440px] inline-block primary-button rounded-3xl duration-300 <?php echo esc_attr($border_classes); ?>"
             style="<?php echo esc_attr($button_styles); ?>"
         >
             <?php echo wp_kses_post($button_text); ?>

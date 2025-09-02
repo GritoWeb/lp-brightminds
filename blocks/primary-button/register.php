@@ -76,7 +76,21 @@ if (function_exists('acf_add_local_field_group')) {
                 ),
                 'default_value' => 'center',
                 'wrapper' => array(
-                    'width' => '100',
+                    'width' => '50',
+                ),
+            ),
+            // Ativar borda preta
+            array(
+                'key' => 'field_enable_border',
+                'label' => '⚫ Ativar Borda Preta',
+                'name' => 'enable_border',
+                'type' => 'true_false',
+                'instructions' => 'Ativar esta opção para mostrar uma borda preta no botão',
+                'required' => 0,
+                'default_value' => 0,
+                'ui' => 1,
+                'wrapper' => array(
+                    'width' => '50',
                 ),
             ),
         ),
