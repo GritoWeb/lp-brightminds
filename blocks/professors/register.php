@@ -150,57 +150,6 @@ if (function_exists('acf_add_local_field_group')) {
                     ),
                 ),
             ),
-            // Configurações de layout
-            array(
-                'key' => 'field_layout_settings',
-                'label' => '⚙️ Configurações de Layout',
-                'name' => 'layout_settings',
-                'type' => 'group',
-                'instructions' => 'Personalize como os professores serão exibidos',
-                'layout' => 'block',
-                'sub_fields' => array(
-                    array(
-                        'key' => 'field_columns_desktop',
-                        'label' => '🖥️ Colunas no Desktop',
-                        'name' => 'columns_desktop',
-                        'type' => 'select',
-                        'instructions' => 'Quantas colunas exibir em telas grandes',
-                        'choices' => array(
-                            '1' => '1 Coluna',
-                            '2' => '2 Colunas (Recomendado)',
-                            '3' => '3 Colunas',
-                        ),
-                        'default_value' => '2',
-                        'wrapper' => array(
-                            'width' => '33',
-                        ),
-                    ),
-                    array(
-                        'key' => 'field_show_title',
-                        'label' => '📝 Exibir Título da Seção',
-                        'name' => 'show_title',
-                        'type' => 'true_false',
-                        'instructions' => 'Marque para mostrar o título da seção',
-                        'default_value' => 1,
-                        'ui' => 1,
-                        'wrapper' => array(
-                            'width' => '33',
-                        ),
-                    ),
-                    array(
-                        'key' => 'field_show_description',
-                        'label' => '📄 Exibir Descrição da Seção',
-                        'name' => 'show_description',
-                        'type' => 'true_false',
-                        'instructions' => 'Marque para mostrar a descrição da seção',
-                        'default_value' => 1,
-                        'ui' => 1,
-                        'wrapper' => array(
-                            'width' => '33',
-                        ),
-                    ),
-                ),
-            ),
         ),
         'location' => array(
             array(

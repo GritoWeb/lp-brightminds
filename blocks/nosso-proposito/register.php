@@ -96,17 +96,6 @@ if (function_exists('acf_add_local_field_group')) {
                 'default_value' => 'Quero que meus filhos tenham um futuro brilhante',
                 'placeholder' => 'Ex: Saiba mais',
             ),
-            // Botão URL
-            array(
-                'key' => 'field_proposito_botao_url',
-                'label' => '🔗 URL do Botão',
-                'name' => 'botao_url',
-                'type' => 'url',
-                'instructions' => 'Para onde o botão deve levar',
-                'required' => 1,
-                'default_value' => '#',
-                'placeholder' => 'https://exemplo.com',
-            ),
         ),
         'location' => array(
             array(
